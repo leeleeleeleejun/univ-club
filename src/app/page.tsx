@@ -11,7 +11,7 @@ export default async function Home() {
         <SearchBar />
         <FilterBar />
       </div>
-      <ul className='grid w-full grid-cols-1 gap-4 grow p-[20px] overflow-y-scroll'>
+      <ul className='flex flex-col gap-4 p-[20px] overflow-y-scroll'>
         {data.map((club) => (
           <ClubCard
             key={club.id}

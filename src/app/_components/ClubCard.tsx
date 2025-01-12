@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { deptCaptionColor } from '@/constants/color';
 import { Club } from '@/types/club';
+import CampusTag from '@/app/_components/CampusTag';
 
 const ClubCard = ({ id, name, tag, category, campus }: Club) => {
   return (
@@ -8,10 +9,7 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
       key={id}
       className='rounded-xl border-solid border-[1.5px] border-gray-100 transition-colors hover:border-gray-200 hover:bg-gray-50'
     >
-      <Link
-        href={`/club/${id}`}
-        className='flex h-full w-full justify-between p-5'
-      >
+      <Link href={`/club/${id}`} className='flex w-full justify-between p-5'>
         <div>
           <div className='font-bold text-xl'>{name}</div>
           <div className='flex items-center'>
@@ -26,17 +24,7 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
             </div>
           </div>
         </div>
-        <div className='flex items-center'>
-          <div
-            className={`rounded-lg px-2 py-1 text-sm font-semibold ${
-              campus === '모집 중'
-                ? 'bg-green-100 text-green-500'
-                : 'bg-gray-100 text-gray-500'
-            }`}
-          >
-            {campus}
-          </div>
-        </div>
+        <CampusTag campus={campus} />
       </Link>
     </li>
   );

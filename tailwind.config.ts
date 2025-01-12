@@ -27,5 +27,10 @@ export default {
     'text-blue-500',
     'text-purple-500',
     'text-zinc-500',
+    'text-rose-500',
+    'text-orange-500',
+    'bg-blue-100',
+    'bg-rose-100',
+    'bg-orange-100',
   ],
 } satisfies Config;

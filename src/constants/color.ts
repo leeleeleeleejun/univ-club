@@ -23,3 +23,9 @@ export const deptCaptionColor: DeptCaptionColor = {
   학술: 'text-purple-500',
   준동아리: 'text-zinc-500',
 };
+
+export const campusColor: DeptCaptionColor = {
+  천안캠: 'text-blue-500 bg-blue-100',
+  신관캠: 'text-rose-500 bg-rose-100',
+  예산캠: 'text-orange-500 bg-orange-100',
+};

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { deptCaptionColor } from '@/constants/color';
 import { ClubInfo } from '@/types/club';
+import CampusTag from '@/app/_components/CampusTag';
 
 export default function ClubHeading(info: ClubInfo) {
   const { name, category, tag, campus, logoImageUrl } = info;
@@ -32,13 +33,7 @@ export default function ClubHeading(info: ClubInfo) {
               </div>
             </div>
           </div>
-          <div
-            className={
-              'h-fit bg-blue-100 text-blue-500 text-lg font-semibold ml-auto px-3 py-1 rounded-xl md:text-xl md:px-4 md:py-2'
-            }
-          >
-            {campus}
-          </div>
+          <CampusTag campus={campus} />
         </div>
       </div>
     </>
