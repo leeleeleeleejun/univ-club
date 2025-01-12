@@ -10,10 +10,10 @@ export default function Footer() {
           개인정보 처리방침
         </a>
         <div className='text-xs font-medium text-gray-500 md:text-sm'>
-          Copyright ⓒ ddingdong. All Rights Reserved
+          Copyright ⓒ Like_Knu. All Rights Reserved
         </div>
         <div className='text-xs text-gray-400 md:text-sm'>
-          E-mail: mju.ddingdong@gmail.com
+          E-mail: wnstjr6293@gmail.com
         </div>
       </div>
     </footer>

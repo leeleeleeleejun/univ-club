@@ -2,7 +2,7 @@ import { CategoryList, deptCaptionColor } from '@/constants/color';
 
 import { Fragment } from 'react';
 
-const FilterBar = () => {
+const FilterBar = ({ ClubsLength }: { ClubsLength: number }) => {
   return (
     <div className={'px-[20px]'}>
       <div
@@ -10,8 +10,8 @@ const FilterBar = () => {
           'py-2 px-3 flex justify-between text-sm font-semibold text-gray-500'
         }
       >
-        <div>총 124개의 동아리</div>
-        <div>모집상태</div>
+        <div>총 {ClubsLength}개의 동아리</div>
+        <div>캠퍼스</div>
       </div>
       <div className='px-3 py-2 rounded-full flex gap-2 overflow-x-auto bg-gray-50'>
         {CategoryList.map((category, index) => (

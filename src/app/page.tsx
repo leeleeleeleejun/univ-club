@@ -9,7 +9,7 @@ export default async function Home() {
     <>
       <div className={'flex flex-col sticky top-0 bg-white'}>
         <SearchBar />
-        <FilterBar />
+        <FilterBar ClubsLength={data.length} />
       </div>
       <ul className='flex flex-col gap-4 p-[20px] overflow-y-scroll'>
         {data.map((club) => (
