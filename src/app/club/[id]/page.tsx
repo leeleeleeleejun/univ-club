@@ -1,27 +1,31 @@
-import ClubHeading from '@/app/club/[id]/_components/ClubHeading';
+import ClubHeading from './_components/ClubHeading';
+import ClubIntroduction from './_components/ClubIntroduction';
+import { getClub } from './_lib';
 import LogoIcon from '@/assets/icons/logo.svg';
-import ClubIntroduction from '@/app/club/[id]/_components/ClubIntroduction';
 
-const ClubDetailPage = () => {
+const ClubDetailPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const id = (await params).id;
+  const data = await getClub(Number(id));
+
   return (
     <div className={'h-full p-[20px]'}>
       <ClubHeading
         logoImageUrl={LogoIcon}
-        name={'PRIMITIVE'}
-        category={'학술'}
-        tag={'IT'}
-        campus={'천안캠'}
+        name={data.name}
+        category={data.category}
+        tag={data.tag}
+        campus={data.campus}
       />
       <ClubIntroduction
-        recruitmentPeriod={'2월 13일 ~ 3월 11일'}
-        introduction={
-          '프리미티브는 프로그래밍으로 어플리케이션, 웹사이트 등 실질적인 결과물을 토대로 경진대회 및 각종 공 모전에 참가하는 동아리입니다.'
-        }
-        membershipMethod={
-          '모집 관련 내용 및 관련 내용 은 에브리타임에 게시, 1년에 한번 모집'
-        }
-        instagram={'primitive_knu'}
-        formUrl={''}
+        recruitmentPeriod={data.recruitmentPeriod}
+        introduction={data.introduction}
+        membershipMethod={data.membershipMethod}
+        instagram={data.instagram}
+        recruitmentUrl={data.recruitmentUrl}
       />
     </div>
   );

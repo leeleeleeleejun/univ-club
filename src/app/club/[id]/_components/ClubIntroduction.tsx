@@ -8,38 +8,52 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
     recruitmentPeriod,
     introduction,
     membershipMethod,
-    formUrl,
+    recruitmentUrl,
     instagram,
   } = ClubFeed;
 
   return (
     <div className={'h-full flex flex-col'}>
       <Section title={'우리 동아리를 소개할게요'} content={introduction} />
-      <Section title={'모집 방법'} content={membershipMethod} />
-      <Section title={'모집 기간'} content={recruitmentPeriod} />
-      <div
-        className={
-          'flex flex-col gap-1 mt-6 text-lg font-bold md:mt-8 md:text-xl'
-        }
-      >
-        Instagram
-        <Link href={`https://www.instagram.com/${instagram}`} target={'_blank'}>
-          <Image src={Instagram} alt={''} width={30} />
-        </Link>
-      </div>
-      <button
-        className={
-          'mt-auto mb-[100px] w-full rounded-xl bg-blue-500 font-bold text-white transition-colors hover:bg-blue-600 md:text-lg md:mb-[120px]'
-        }
-      >
-        <Link
-          target='_blank'
-          href={formUrl}
-          className='inline-block w-full py-4'
+      <Section
+        title={'모집 방법'}
+        content={membershipMethod || '추후 공개하도록 하겠습니다!'}
+      />
+      <Section
+        title={'모집 기간'}
+        content={recruitmentPeriod || '현재 모집을 하고 있지 않아요 🥲'}
+      />
+      {instagram && (
+        <div
+          className={
+            'flex flex-col gap-1 mt-6 text-lg font-bold md:mt-8 md:text-xl'
+          }
         >
-          지원하기
-        </Link>
-      </button>
+          Instagram
+          <Link
+            href={`https://www.instagram.com/${instagram}`}
+            target={'_blank'}
+          >
+            <Image src={Instagram} alt={''} width={30} />
+          </Link>
+        </div>
+      )}
+
+      {recruitmentUrl && (
+        <button
+          className={
+            'mt-auto mb-[100px] w-full rounded-xl bg-blue-500 font-bold text-white transition-colors hover:bg-blue-600 md:text-lg md:mb-[120px]'
+          }
+        >
+          <Link
+            target='_blank'
+            href={recruitmentUrl}
+            className='inline-block w-full py-4'
+          >
+            지원하기
+          </Link>
+        </button>
+      )}
     </div>
   );
 };
@@ -54,7 +68,9 @@ const Section = ({ title, content }: { title: string; content: string }) => {
           'mt-1 bg-white text-base font-medium text-gray-500 md:mt-2 md:text-lg'
         }
       >
-        {content}
+        {content
+          ?.split('\n')
+          .map((line: string, index: number) => <p key={index}>{line}</p>)}
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ export interface ClubFeed {
   recruitmentPeriod: string;
   introduction: string;
   membershipMethod: string;
-  formUrl: string;
+  recruitmentUrl: string;
   instagram: string;
 }
 
