@@ -9,7 +9,6 @@ export default function Home() {
         <SearchBar />
         <FilterBar />
       </div>
-      {/*<div className={'h-full mt-[16px] flex flex-col overflow-y-scroll'}>*/}
       <ul className='grid w-full grid-cols-1 gap-4 grow p-[20px] overflow-y-scroll'>
         <ClubCard
           id={1}

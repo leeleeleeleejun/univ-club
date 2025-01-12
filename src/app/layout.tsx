@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body
-        className={`${pretendard.className} antialiased max-w-[500px] h-min-screen flex flex-col m-auto justify-between text-gray-800`}
+        className={`${pretendard.className} antialiased max-w-[500px] h-screen flex flex-col m-auto justify-between text-gray-800`}
       >
-        {children}
+        <div className={'h-full'}>{children}</div>
         <Footer />
       </body>
     </html>
