@@ -1,6 +1,7 @@
 import { CategoryList, deptCaptionColor } from '@/constants/color';
 
 import { Fragment } from 'react';
+import DropDown from '@/app/_components/DropDown';
 
 const FilterBar = ({ ClubsLength }: { ClubsLength: number }) => {
   return (
@@ -11,7 +12,7 @@ const FilterBar = ({ ClubsLength }: { ClubsLength: number }) => {
         }
       >
         <div>총 {ClubsLength}개의 동아리</div>
-        <div>캠퍼스</div>
+        <DropDown />
       </div>
       <div className='px-3 py-2 rounded-full flex gap-2 overflow-x-auto bg-gray-50'>
         {CategoryList.map((category, index) => (

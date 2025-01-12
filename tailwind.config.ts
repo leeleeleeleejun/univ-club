@@ -1,10 +1,12 @@
+import {nextui} from '@nextui-org/theme';
 import type { Config } from 'tailwindcss';
 
 export default {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/components/(dropdown|menu|divider|popover|button|ripple|spinner).js"
   ],
   theme: {
     extend: {
@@ -14,7 +16,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [nextui()],
   safelist: [
     'text-red-500',
     'text-pink-500',
