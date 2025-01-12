@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className=' flex w-full bg-gray-50'>
-      <div className='w-full px-6 py-8'>
+    <footer className='flex w-full bg-gray-50'>
+      <div className='w-full px-6 py-6'>
         <a
           target='_blank'
           href='https://www.notion.so/woopaca/722d2e1180f94eeead36ec09436d4576?pvs=4'

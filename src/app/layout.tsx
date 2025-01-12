@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${pretendard.className} antialiased max-w-[500px] h-screen flex flex-col m-auto justify-between text-gray-800`}
       >
-        <div className={'h-full'}>{children}</div>
+        <div className={'h-full flex flex-col'}>{children}</div>
         <Footer />
       </body>
     </html>
