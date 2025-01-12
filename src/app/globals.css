@@ -64,14 +64,14 @@ table {
 /*}*/
 
 body {
-  max-width: 500px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
   color: var(--foreground);
   background: var(--background);
-  ::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
