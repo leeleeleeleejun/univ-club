@@ -3,7 +3,7 @@ export interface Club {
   name: string;
   category: string;
   tag: string;
-  recruitStatus: string;
+  campus: string;
 }
 
 export interface ClubInfo {

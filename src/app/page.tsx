@@ -1,8 +1,10 @@
 import SearchBar from '@/app/_components/SearchBar';
 import FilterBar from '@/app/_components/Filter';
 import ClubCard from '@/app/_components/ClubCard';
+import { getClubs } from '@/app/_lib';
 
-export default function Home() {
+export default async function Home() {
+  const data = await getClubs();
   return (
     <>
       <div className={'flex flex-col sticky top-0 bg-white'}>
@@ -10,48 +12,16 @@ export default function Home() {
         <FilterBar />
       </div>
       <ul className='grid w-full grid-cols-1 gap-4 grow p-[20px] overflow-y-scroll'>
-        <ClubCard
-          id={1}
-          name={'Zero'}
-          category={'학술'}
-          tag={'창업'}
-          recruitStatus={'모집 중'}
-        />
-        <ClubCard
-          id={2}
-          name={'Guts'}
-          category={'체육'}
-          tag={'창업'}
-          recruitStatus={'모집마감'}
-        />
-        <ClubCard
-          id={1}
-          name={'Zero'}
-          category={'학술'}
-          tag={'창업'}
-          recruitStatus={'모집 중'}
-        />
-        <ClubCard
-          id={2}
-          name={'Guts'}
-          category={'체육'}
-          tag={'창업'}
-          recruitStatus={'모집마감'}
-        />
-        <ClubCard
-          id={1}
-          name={'Zero'}
-          category={'학술'}
-          tag={'창업'}
-          recruitStatus={'모집 중'}
-        />
-        <ClubCard
-          id={2}
-          name={'Guts'}
-          category={'체육'}
-          tag={'창업'}
-          recruitStatus={'모집마감'}
-        />
+        {data.map((club) => (
+          <ClubCard
+            key={club.id}
+            id={club.id}
+            name={club.name}
+            category={club.category}
+            tag={club.tag}
+            campus={club.campus}
+          />
+        ))}
       </ul>
     </>
   );

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { deptCaptionColor } from '@/constants/color';
 import { Club } from '@/types/club';
 
-const ClubCard = ({ id, name, tag, category, recruitStatus }: Club) => {
+const ClubCard = ({ id, name, tag, category, campus }: Club) => {
   return (
     <li
       key={id}
@@ -29,12 +29,12 @@ const ClubCard = ({ id, name, tag, category, recruitStatus }: Club) => {
         <div className='flex items-center'>
           <div
             className={`rounded-lg px-2 py-1 text-sm font-semibold ${
-              recruitStatus === '모집 중'
+              campus === '모집 중'
                 ? 'bg-green-100 text-green-500'
                 : 'bg-gray-100 text-gray-500'
             }`}
           >
-            {recruitStatus}
+            {campus}
           </div>
         </div>
       </Link>
