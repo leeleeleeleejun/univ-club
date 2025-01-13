@@ -25,3 +25,11 @@ export interface ClubFeed {
 export type DeptCaptionColor = {
   [name: string]: string;
 };
+
+export interface Filters {
+  category: string[];
+  campus: string[];
+  tag: string[];
+}
+
+export type FilterType = keyof Filters;

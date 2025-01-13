@@ -1,7 +1,6 @@
 import { DeptCaptionColor } from '@/types/club';
 
 export const CategoryList = [
-  '전체',
   '봉사',
   '사회연구',
   '연행예술',
