@@ -10,58 +10,52 @@ import { FilterType } from '@/types/club';
 import { useState } from 'react';
 import { campusTextColor } from '@/constants/color';
 
+interface CampusOption {
+  value: string;
+  label: string;
+  shortLabel: string;
+}
+
+const campusOptions: CampusOption[] = [
+  { value: '', label: '전체', shortLabel: '전체' },
+  { value: '신관캠', label: '신관캠', shortLabel: '신관' },
+  { value: '천안캠', label: '천안캠', shortLabel: '천안' },
+  { value: '예산캠', label: '예산캠', shortLabel: '예산' },
+];
+
 export default function DropDown({
   onFilterAction,
 }: {
   onFilterAction: (filterType: FilterType, value: string) => void;
 }) {
-  const [campus, setCampus] = useState('전체');
+  const [selectedCampus, setSelectedCampus] = useState<CampusOption>(
+    campusOptions[0]
+  );
 
   return (
     <Dropdown>
       <DropdownTrigger>
         <button>
-          <span className={`mr-1 ${campusTextColor[campus]}`}>{campus}</span>
+          <span
+            className={`mr-1 ${campusTextColor[selectedCampus.shortLabel]}`}
+          >
+            {selectedCampus.shortLabel}
+          </span>
           캠퍼스
         </button>
       </DropdownTrigger>
-      <DropdownMenu aria-label='Static Actions'>
-        <DropdownItem
-          key='전체'
-          onPress={() => {
-            onFilterAction('campus', '');
-            setCampus('전체');
-          }}
-        >
-          전체
-        </DropdownItem>
-        <DropdownItem
-          key='신관캠'
-          onPress={() => {
-            onFilterAction('campus', '신관캠');
-            setCampus('신관');
-          }}
-        >
-          신관캠
-        </DropdownItem>
-        <DropdownItem
-          key='천안캠'
-          onPress={() => {
-            onFilterAction('campus', '천안캠');
-            setCampus('천안');
-          }}
-        >
-          천안캠
-        </DropdownItem>
-        <DropdownItem
-          key='예산캠'
-          onPress={() => {
-            onFilterAction('campus', '예산캠');
-            setCampus('예산');
-          }}
-        >
-          예산캠
-        </DropdownItem>
+      <DropdownMenu aria-label='Campus Selection'>
+        {campusOptions.map((option) => (
+          <DropdownItem
+            key={option.value}
+            onPress={() => {
+              onFilterAction('campus', option.value);
+              setSelectedCampus(option);
+            }}
+          >
+            {option.label}
+          </DropdownItem>
+        ))}
       </DropdownMenu>
     </Dropdown>
   );

@@ -28,7 +28,7 @@ export type DeptCaptionColor = {
 
 export interface Filters {
   category: string[];
-  campus: string[];
+  campus: string;
   tag: string[];
 }
 

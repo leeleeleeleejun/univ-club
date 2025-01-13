@@ -12,25 +12,34 @@ export default function Home({ initialData }: HomeProps) {
   const [filteredData, setFilteredData] = useState<Club[]>(initialData);
   const [filters, setFilters] = useState<Filters>({
     category: [],
-    campus: [],
+    campus: '',
     tag: [],
   });
 
   const handleFilter = (filterType: FilterType, value: string) => {
     let newFilters;
 
-    if (value) {
+    if (filterType === 'campus') {
+      // campus 필터 처리
       newFilters = {
         ...filters,
-        [filterType]: filters[filterType].includes(value)
-          ? filters[filterType].filter((item) => item !== value)
-          : [...filters[filterType], value],
+        campus: value, // 직접 값 할당
       };
     } else {
-      newFilters = {
-        ...filters,
-        [filterType]: [],
-      };
+      // 다른 필터(category, tag) 처리
+      if (value) {
+        newFilters = {
+          ...filters,
+          [filterType]: filters[filterType].includes(value)
+            ? filters[filterType].filter((item) => item !== value)
+            : [...filters[filterType], value],
+        };
+      } else {
+        newFilters = {
+          ...filters,
+          [filterType]: [],
+        };
+      }
     }
 
     setFilters(newFilters);
@@ -44,8 +53,9 @@ export default function Home({ initialData }: HomeProps) {
       );
     }
 
-    if (newFilters.campus.length > 0) {
-      result = result.filter((club) => newFilters.campus.includes(club.campus));
+    if (newFilters.campus) {
+      // campus가 빈 문자열이 아닌 경우에만 필터링
+      result = result.filter((club) => club.campus === newFilters.campus);
     }
 
     if (newFilters.tag.length > 0) {
@@ -54,7 +64,6 @@ export default function Home({ initialData }: HomeProps) {
 
     setFilteredData(result);
   };
-
   return (
     <>
       <div className='flex flex-col sticky top-0 bg-white'>
