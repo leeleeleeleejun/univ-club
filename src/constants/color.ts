@@ -28,3 +28,9 @@ export const campusColor: DeptCaptionColor = {
   신관캠: 'text-rose-500 bg-rose-100',
   예산캠: 'text-orange-500 bg-orange-100',
 };
+
+export const campusTextColor: DeptCaptionColor = {
+  천안: 'text-blue-500',
+  신관: 'text-rose-500',
+  예산: 'text-orange-500',
+};
