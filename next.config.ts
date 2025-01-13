@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: [
+      'scontent-ssn1-1.cdninstagram.com',
+      'nimda.space',
+      'img.notionusercontent.com',
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

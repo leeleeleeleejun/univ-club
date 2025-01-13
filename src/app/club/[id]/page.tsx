@@ -14,7 +14,7 @@ const ClubDetailPage = async ({
   return (
     <div className={'h-full p-[20px]'}>
       <ClubHeading
-        logoImageUrl={LogoIcon}
+        logoImageUrl={data.logoImageUrl || LogoIcon}
         name={data.name}
         category={data.category}
         tag={data.tag}
