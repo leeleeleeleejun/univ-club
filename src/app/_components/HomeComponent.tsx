@@ -4,29 +4,32 @@ import SearchBar from '@/app/_components/SearchBar';
 import FilterBar from '@/app/_components/Filter';
 import ClubCard from '@/app/_components/ClubCard';
 import { Club, Filters, FilterType } from '@/types/club';
+
 interface HomeProps {
   initialData: Club[];
 }
 
 export default function Home({ initialData }: HomeProps) {
-  const [filteredData, setFilteredData] = useState<Club[]>(initialData);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [filters, setFilters] = useState<Filters>({
     category: [],
     campus: '',
     tag: [],
   });
 
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+  };
+
   const handleFilter = (filterType: FilterType, value: string) => {
     let newFilters;
 
     if (filterType === 'campus') {
-      // campus 필터 처리
       newFilters = {
         ...filters,
-        campus: value, // 직접 값 할당
+        campus: value,
       };
     } else {
-      // 다른 필터(category, tag) 처리
       if (value) {
         newFilters = {
           ...filters,
@@ -43,35 +46,52 @@ export default function Home({ initialData }: HomeProps) {
     }
 
     setFilters(newFilters);
+  };
 
-    // Apply all active filters
+  const getFilteredAndSearchedData = () => {
     let result = initialData;
 
-    if (newFilters.category.length > 0) {
+    // 필터 적용
+    if (filters.category.length > 0) {
       result = result.filter((club) =>
-        newFilters.category.includes(club.category)
+        filters.category.includes(club.category)
       );
     }
 
-    if (newFilters.campus) {
-      // campus가 빈 문자열이 아닌 경우에만 필터링
-      result = result.filter((club) => club.campus === newFilters.campus);
+    if (filters.campus) {
+      result = result.filter((club) => club.campus === filters.campus);
     }
 
-    if (newFilters.tag.length > 0) {
-      result = result.filter((club) => newFilters.tag.includes(club.tag));
+    if (filters.tag.length > 0) {
+      result = result.filter((club) => filters.tag.includes(club.tag));
     }
 
-    setFilteredData(result);
+    if (searchTerm.trim()) {
+      const term = searchTerm.trim().toLowerCase();
+      result = result.filter(
+        (club) =>
+          club.name.toLowerCase().includes(term) ||
+          club.category.toLowerCase().includes(term) ||
+          club.tag.toLowerCase().includes(term)
+      );
+    }
+
+    return result;
   };
+
+  const filteredAndSearchedData = getFilteredAndSearchedData();
+
   return (
     <>
       <div className='flex flex-col sticky top-0 bg-white'>
-        <SearchBar />
-        <FilterBar ClubsLength={filteredData.length} onFilter={handleFilter} />
+        <SearchBar handleSearch={handleSearch} />
+        <FilterBar
+          ClubsLength={filteredAndSearchedData.length}
+          onFilter={handleFilter}
+        />
       </div>
       <ul className='flex flex-col gap-4 p-5 overflow-y-scroll'>
-        {filteredData.map((club) => (
+        {filteredAndSearchedData.map((club) => (
           <ClubCard
             key={club.id}
             id={club.id}
