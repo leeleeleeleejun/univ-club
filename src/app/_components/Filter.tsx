@@ -9,6 +9,27 @@ interface FilterBarProps {
 }
 
 const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
+  const [activeCategories, setActiveCategories] = useState<string[]>([]);
+
+  // 필터 초기화 함수
+  const handleReset = () => {
+    setActiveCategories([]);
+    onFilter('category', ''); // 빈 문자열을 보내 필터 초기화
+  };
+
+  const handleCategorySelect = (category: string) => {
+    setActiveCategories((prev) => {
+      if (prev.includes(category)) {
+        // 이미 선택된 카테고리면 제거
+        const newCategories = prev.filter((cat) => cat !== category);
+        return newCategories;
+      } else {
+        // 새로운 카테고리 추가
+        return [...prev, category];
+      }
+    });
+  };
+
   return (
     <div className={'px-[20px]'}>
       <div
@@ -17,14 +38,26 @@ const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
         }
       >
         <div>총 {ClubsLength}개의 동아리</div>
-        <DropDown />
+        <DropDown onFilterAction={onFilter} />
       </div>
       <div className='px-3 py-2 rounded-full flex gap-2 overflow-x-auto bg-gray-50'>
+        <Fragment>
+          <button
+            onClick={handleReset}
+            className={`rounded-lg text-sm font-semibold whitespace-nowrap ${activeCategories.length === 0 && deptCaptionColor['전체']}`}
+          >
+            전체
+          </button>
+          <div className='flex items-center font-semibold text-gray-300'>|</div>
+        </Fragment>
         {CategoryList.map((category, index) => (
           <Fragment key={category}>
-            <CategoryTabBtn category={category} onFilter={onFilter}>
-              {category}
-            </CategoryTabBtn>
+            <CategoryTabBtn
+              category={category}
+              onFilter={onFilter}
+              handleCategorySelect={handleCategorySelect}
+              isActive={activeCategories.includes(category)}
+            />
             {index !== CategoryList.length - 1 && (
               <div className='flex items-center font-semibold text-gray-300'>
                 |
@@ -40,25 +73,25 @@ const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
 export default FilterBar;
 
 const CategoryTabBtn = ({
-  children,
   category,
+  isActive,
   onFilter,
+  handleCategorySelect,
 }: Readonly<{
-  children: React.ReactNode;
   category: string;
+  isActive: boolean;
   onFilter: (filterType: FilterType, value: string) => void;
+  handleCategorySelect: (category: string) => void;
 }>) => {
-  const [isActive, setIsActive] = useState(false);
-
   return (
     <button
       onClick={() => {
         onFilter('category', category);
-        setIsActive(!isActive);
+        handleCategorySelect(category);
       }}
       className={`rounded-lg text-sm font-semibold whitespace-nowrap ${isActive && deptCaptionColor[category]}`}
     >
-      {children}
+      {category}
     </button>
   );
 };

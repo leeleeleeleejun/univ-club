@@ -17,12 +17,22 @@ export default function Home({ initialData }: HomeProps) {
   });
 
   const handleFilter = (filterType: FilterType, value: string) => {
-    const newFilters = {
-      ...filters,
-      [filterType]: filters[filterType].includes(value)
-        ? filters[filterType].filter((item) => item !== value)
-        : [...filters[filterType], value],
-    };
+    let newFilters;
+
+    if (value) {
+      newFilters = {
+        ...filters,
+        [filterType]: filters[filterType].includes(value)
+          ? filters[filterType].filter((item) => item !== value)
+          : [...filters[filterType], value],
+      };
+    } else {
+      newFilters = {
+        ...filters,
+        [filterType]: [],
+      };
+    }
+
     setFilters(newFilters);
 
     // Apply all active filters
