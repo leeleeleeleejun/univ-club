@@ -5,10 +5,10 @@ import LogoIcon from '@/assets/icons/logo.svg';
 import { getClubs } from '@/app/_lib';
 
 export async function generateStaticParams() {
-  const posts = await getClubs();
+  const clubs = await getClubs();
 
-  return posts.map((post) => ({
-    id: post.id,
+  return clubs.map((club) => ({
+    id: String(club.id),
   }));
 }
 
