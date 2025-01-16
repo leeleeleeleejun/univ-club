@@ -1,8 +1,8 @@
 ---
-name: Feature Template
-about: 기능 구현 이슈 템플릿
-title: "[Feature]"
-labels: "✨ Feature"
+name: Refactor Template
+about: 리팩토링 관련
+title: "[Refactor] "
+labels: "\U0001F528 Refactor"
 assignees: leeleeleeleejun
 
 ---
