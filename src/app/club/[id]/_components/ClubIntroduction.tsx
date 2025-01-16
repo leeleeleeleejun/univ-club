@@ -2,6 +2,7 @@ import { ClubFeed } from '@/types/club';
 import Link from 'next/link';
 import Image from 'next/image';
 import Instagram from '@/assets/icons/instagram.svg';
+import ActionButton from '@/app/_components/ActionButton';
 
 const ClubIntroduction = (ClubFeed: ClubFeed) => {
   const {
@@ -40,19 +41,11 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
       )}
 
       {recruitmentUrl && (
-        <button
-          className={
-            'mt-auto mb-[100px] w-full rounded-xl bg-blue-500 font-bold text-white transition-colors hover:bg-blue-600 md:text-lg md:mb-[120px]'
-          }
-        >
-          <Link
-            target='_blank'
-            href={recruitmentUrl}
-            className='inline-block w-full py-4'
-          >
+        <ActionButton>
+          <Link target='_blank' href={recruitmentUrl}>
             지원하기
           </Link>
-        </button>
+        </ActionButton>
       )}
     </div>
   );
