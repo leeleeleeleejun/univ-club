@@ -19,9 +19,9 @@ export const dynamicParams = true;
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
 
   const data = await getClub(Number(id));
   const { name } = data;
@@ -33,7 +33,7 @@ export async function generateMetadata({
       description: `${name}`,
       locale: 'ko-KR',
       siteName: 'univ-club.vercel.app',
-      url: `https://univ-club.vercel.app/club/1`,
+      url: `https://univ-club.vercel.app/club/${id}`,
       type: 'website',
     },
   };
