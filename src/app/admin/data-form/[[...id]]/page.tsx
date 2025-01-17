@@ -19,6 +19,8 @@ const Page = async ({ params }: { params: Promise<{ id?: string[] }> }) => {
           <option key={category}>{category}</option>
         ))}
       </select>
+      <Title content={'태그'} />
+      <input className={commonInputStyle} placeholder={'창업'} />
       <Title content={'동아리 로고 이미지 (선택)'} />
       <input
         type={'file'}
