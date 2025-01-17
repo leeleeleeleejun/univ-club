@@ -18,9 +18,10 @@ export interface ClubFeed {
   recruitmentPeriod: string;
   introduction: string;
   membershipMethod: string;
-  recruitmentUrl: string;
   instagram: string;
 }
+
+export type ClubDetail = ClubInfo & ClubFeed & { recruitmentUrl: string };
 
 export type DeptCaptionColor = {
   [name: string]: string;

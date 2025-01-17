@@ -2,19 +2,13 @@ import { ClubFeed } from '@/types/club';
 import Link from 'next/link';
 import Image from 'next/image';
 import Instagram from '@/assets/icons/instagram.svg';
-import ActionButton from '@/app/_components/ActionButton';
 
 const ClubIntroduction = (ClubFeed: ClubFeed) => {
-  const {
-    recruitmentPeriod,
-    introduction,
-    membershipMethod,
-    recruitmentUrl,
-    instagram,
-  } = ClubFeed;
+  const { recruitmentPeriod, introduction, membershipMethod, instagram } =
+    ClubFeed;
 
   return (
-    <div className={'h-full flex flex-col'}>
+    <div className={' flex flex-col'}>
       <Section title={'우리 동아리를 소개할게요'} content={introduction} />
       <Section
         title={'모집 방법'}
@@ -38,14 +32,6 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
             <Image src={Instagram} alt={''} width={30} />
           </Link>
         </div>
-      )}
-
-      {recruitmentUrl && (
-        <ActionButton>
-          <Link target='_blank' href={recruitmentUrl}>
-            지원하기
-          </Link>
-        </ActionButton>
       )}
     </div>
   );
