@@ -1,10 +1,9 @@
-import ClubHeading from './_components/ClubHeading';
-import ClubIntroduction from './_components/ClubIntroduction';
-import { getClub } from './_lib';
 import LogoIcon from '@/assets/icons/logo.svg';
 import { getClubs } from '@/app/_lib';
 import { Metadata } from 'next';
-import ActionButton from '@/app/_components/ActionButton';
+import { getClub } from '@/app/club/[id]/_lib';
+import ClubHeading from '@/app/club/[id]/_components/ClubHeading';
+import ClubIntroduction from '@/app/club/[id]/_components/ClubIntroduction';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -63,14 +62,14 @@ const ClubDetailPage = async ({
         introduction={data.introduction}
         membershipMethod={data.membershipMethod}
         instagram={data.instagram}
+        recruitmentUrl={data.recruitmentUrl}
       />
-      {data.recruitmentUrl && (
-        <ActionButton>
-          <Link target='_blank' href={data.recruitmentUrl}>
-            지원하기
-          </Link>
-        </ActionButton>
-      )}
+      <div className={'flex justify-around text-white mt-auto'}>
+        <button className={'bg-orange-400 p-4 rounded-xl'}>
+          <Link href={`/admin/data-form/${id}`}>수정하기</Link>
+        </button>
+        <button className={'bg-rose-500 p-4 rounded-xl'}>삭제하기</button>
+      </div>
     </div>
   );
 };
