@@ -43,12 +43,16 @@ const LogoImage = ({
         accept='image/jpeg, image/png'
         name='logo'
       />
-      <div className={'flex flex-col justify-around text-white font-semibold'}>
+      <div
+        className={
+          'flex flex-col gap-2 justify-around text-white font-semibold'
+        }
+      >
         <label htmlFor='file' className={'bg-blue-400 p-3 rounded-xl'}>
           이미지 선택
         </label>
         <button onClick={deleteImage} className={'bg-gray-400 p-3 rounded-xl'}>
-          이미지 삭제
+          기본 이미지
         </button>
       </div>
     </div>
