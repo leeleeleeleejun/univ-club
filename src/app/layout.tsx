@@ -25,7 +25,6 @@ export const metadata: Metadata = {
     url: `https://univ-club.vercel.app`,
     type: 'website',
   },
-  viewport: {},
 };
 
 export default function RootLayout({
