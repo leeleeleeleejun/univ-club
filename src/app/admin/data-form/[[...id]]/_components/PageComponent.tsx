@@ -5,6 +5,7 @@ import ActionButton from '@/app/_components/ActionButton';
 import { ClubDetail, ClubDetailKey } from '@/types/club';
 import { useEffect, useState } from 'react';
 import Input, { commonInputStyle } from './Input';
+import LogoImage from '@/app/admin/data-form/[[...id]]/_components/LogoImage';
 
 const PageComponent = ({
   initialData,
@@ -23,10 +24,13 @@ const PageComponent = ({
     instagram: '',
     recruitmentUrl: '',
   });
+  const [viewProfileImg, setViewProfileImg] = useState<string | null>(null);
+  const [imgFile, setImgFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (initialData) {
       setData(initialData);
+      setViewProfileImg(initialData.logoImageUrl);
     }
   }, [initialData]);
 
@@ -68,11 +72,10 @@ const PageComponent = ({
         value={data.tag}
       />
       <Title content={'동아리 로고 이미지 (선택)'} />
-      <input
-        type={'file'}
-        id='file'
-        accept='image/jpeg, image/png'
-        className={commonInputStyle}
+      <LogoImage
+        setImgFile={setImgFile}
+        viewProfileImg={viewProfileImg}
+        setViewProfileImg={setViewProfileImg}
       />
       <Title content={'동아리 이름'} />
       <Input
@@ -124,7 +127,9 @@ const PageComponent = ({
         placeholder={'knu-times'}
         value={data.instagram}
       />
-      <ActionButton>제출하기</ActionButton>
+      <div className={'mt-10'}>
+        <ActionButton>제출하기</ActionButton>
+      </div>
     </div>
   );
 };

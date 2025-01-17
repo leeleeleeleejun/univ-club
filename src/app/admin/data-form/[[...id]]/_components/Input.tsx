@@ -15,7 +15,7 @@ const Input = ({
     <input
       className={commonInputStyle}
       placeholder={placeholder}
-      value={value}
+      value={value || ''}
       onChange={(event) => {
         setDataFunc(clubDetailKey, event.target.value);
       }}
