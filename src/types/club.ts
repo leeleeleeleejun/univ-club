@@ -23,6 +23,18 @@ export interface ClubFeed {
 
 export type ClubDetail = ClubInfo & ClubFeed & { recruitmentUrl: string };
 
+export type ClubDetailKey =
+  | 'logoImageUrl'
+  | 'name'
+  | 'category'
+  | 'tag'
+  | 'campus'
+  | 'recruitmentPeriod'
+  | 'introduction'
+  | 'membershipMethod'
+  | 'instagram'
+  | 'recruitmentUrl';
+
 export type DeptCaptionColor = {
   [name: string]: string;
 };
