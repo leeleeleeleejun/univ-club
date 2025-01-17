@@ -24,7 +24,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
 
-  const data = await getClub(Number(id));
+  const data = await getClub(id);
   const { name } = data;
   return {
     title: name,
@@ -46,7 +46,7 @@ const ClubDetailPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
-  const data = await getClub(Number(id));
+  const data = await getClub(id);
 
   return (
     <div className={'h-full flex flex-col p-[20px]'}>
