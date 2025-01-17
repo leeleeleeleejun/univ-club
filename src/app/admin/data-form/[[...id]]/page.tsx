@@ -1,7 +1,10 @@
 import { CategoryList } from '@/constants/color';
 import ActionButton from '@/app/_components/ActionButton';
 
-const Page = () => {
+const Page = async ({ params }: { params: Promise<{ id?: string[] }> }) => {
+  const { id } = await params;
+  console.log(id);
+
   return (
     <div className={'p-[20px] gap-2 flex flex-col overflow-y-scroll'}>
       <Title content={'캠퍼스'} />
