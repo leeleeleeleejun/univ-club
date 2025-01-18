@@ -6,14 +6,14 @@ import ClubHeading from '@/app/club/[id]/_components/ClubHeading';
 import ClubIntroduction from '@/app/club/[id]/_components/ClubIntroduction';
 import Link from 'next/link';
 
+import DeleteButton from '@/app/admin/club/[id]/_components/DeleteButton';
+
 export async function generateStaticParams() {
   const clubs = await getClubs();
-
   return clubs.map((club) => ({
     id: String(club.id),
   }));
 }
-
 // export const revalidate = 3600; // 1시간마다 데이터 체크 & 업데이트
 export const dynamicParams = true;
 
@@ -67,7 +67,7 @@ const ClubDetailPage = async ({
         <button className={'bg-orange-400 p-4 rounded-xl'}>
           <Link href={`/admin/data-form/${id}`}>수정하기</Link>
         </button>
-        <button className={'bg-rose-500 p-4 rounded-xl'}>삭제하기</button>
+        <DeleteButton id={id} />
       </div>
     </div>
   );

@@ -21,7 +21,8 @@ export interface ClubFeed {
   instagram: string;
 }
 
-export type ClubDetail = ClubInfo & ClubFeed & { recruitmentUrl: string };
+export type ClubDetail = ClubInfo &
+  ClubFeed & { id: string; recruitmentUrl: string };
 
 export type ClubDetailKey =
   | 'logoImageUrl'
