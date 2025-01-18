@@ -4,12 +4,12 @@ const Input = ({
   value,
   placeholder = '',
   clubDetailKey,
-  setDataFunc,
+  handleFieldChange,
 }: {
   value: string;
   placeholder: string;
   clubDetailKey: ClubDetailKey;
-  setDataFunc: (name: ClubDetailKey, data: string) => void;
+  handleFieldChange: (name: ClubDetailKey, data: string) => void;
 }) => {
   return (
     <input
@@ -17,7 +17,7 @@ const Input = ({
       placeholder={placeholder}
       value={value || ''}
       onChange={(event) => {
-        setDataFunc(clubDetailKey, event.target.value);
+        handleFieldChange(clubDetailKey, event.target.value);
       }}
     />
   );
