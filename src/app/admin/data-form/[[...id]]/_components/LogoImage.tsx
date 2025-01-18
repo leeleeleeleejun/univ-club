@@ -3,32 +3,32 @@ import Image from 'next/image';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 const LogoImage = ({
-  viewProfileImg,
-  setViewProfileImg,
-  setImgFile,
+  logoPreview,
+  setLogoPreview,
+  setLogoFile,
 }: {
-  viewProfileImg: string | null;
-  setViewProfileImg: Dispatch<SetStateAction<string | null>>;
-  setImgFile: Dispatch<SetStateAction<File | null>>;
+  logoPreview: string | null;
+  setLogoPreview: Dispatch<SetStateAction<string | null>>;
+  setLogoFile: Dispatch<SetStateAction<File | null>>;
 }) => {
   const fileHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
-    setImgFile(selectedFile);
+    setLogoFile(selectedFile);
     if (selectedFile) {
-      setViewProfileImg(URL.createObjectURL(selectedFile));
+      setLogoPreview(URL.createObjectURL(selectedFile));
     }
   };
 
   const deleteImage = () => {
-    setViewProfileImg(null);
-    setImgFile(null);
+    setLogoPreview(null);
+    setLogoFile(null);
   };
 
   return (
     <div className={'flex justify-around'}>
       <div className='h-30 w-30 overflow-hidden rounded-full border-solid border-[1.5px] border-gray-100 md:h-20 md:w-20'>
         <Image
-          src={viewProfileImg ? viewProfileImg : logo}
+          src={logoPreview ? logoPreview : logo}
           width={80}
           height={80}
           priority
