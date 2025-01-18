@@ -86,6 +86,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'tag'}
           placeholder={'창업'}
           value={formData.tag}
+          maxLength={8}
         />
       </FormSection>
       <FormSection content={'동아리 이름 (필수)'}>
@@ -94,6 +95,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'name'}
           placeholder={''}
           value={formData.name}
+          maxLength={16}
         />
       </FormSection>
       <FormSection content={'동아리 소개 (필수)'}>
@@ -110,7 +112,11 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           onChange={(event) => {
             handleFieldChange('introduction', event.target.value);
           }}
+          maxLength={2000}
         />
+        <div className={'text-sm text-right font-semibold text-gray-400'}>
+          {formData.introduction.length} / {2000}
+        </div>
       </FormSection>
       <FormSection content={'동아리 모집기간'}>
         <Input
