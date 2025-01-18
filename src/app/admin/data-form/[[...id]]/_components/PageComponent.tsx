@@ -1,12 +1,13 @@
 'use client';
 
 import { CategoryList } from '@/constants/color';
-import ActionButton from '@/app/_components/ActionButton';
 import { ClubDetail, ClubDetailKey } from '@/types/club';
 import { useEffect, useState } from 'react';
 import Input, { commonInputStyle } from './Input';
 import LogoImage from '@/app/admin/data-form/[[...id]]/_components/LogoImage';
 import Select from './Select';
+import CreateButton from '@/app/admin/data-form/[[...id]]/_components/CreateButton';
+import UpdateButton from '@/app/admin/data-form/[[...id]]/_components/UpdateButton';
 
 export interface ClubFormData {
   name: string;
@@ -144,7 +145,16 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
         />
       </FormSection>
       <div className={'mt-10'}>
-        <ActionButton>제출하기</ActionButton>
+        {initialData ? (
+          <UpdateButton
+            id={initialData.id}
+            formData={formData}
+            logoFile={logoFile}
+            logoPreview={logoPreview}
+          />
+        ) : (
+          <CreateButton formData={formData} logoFile={logoFile} />
+        )}
       </div>
     </div>
   );
