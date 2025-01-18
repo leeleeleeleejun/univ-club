@@ -5,21 +5,31 @@ const Input = ({
   placeholder = '',
   clubDetailKey,
   handleFieldChange,
+  maxLength,
 }: {
   value: string;
   placeholder: string;
   clubDetailKey: ClubDetailKey;
   handleFieldChange: (name: ClubDetailKey, data: string) => void;
+  maxLength?: number;
 }) => {
   return (
-    <input
-      className={commonInputStyle}
-      placeholder={placeholder}
-      value={value || ''}
-      onChange={(event) => {
-        handleFieldChange(clubDetailKey, event.target.value);
-      }}
-    />
+    <div>
+      <input
+        className={commonInputStyle}
+        placeholder={placeholder}
+        value={value || ''}
+        onChange={(event) => {
+          handleFieldChange(clubDetailKey, event.target.value);
+        }}
+        maxLength={maxLength}
+      />
+      {maxLength && (
+        <div className={'text-sm text-right font-semibold text-gray-400'}>
+          {value.length} / {maxLength}
+        </div>
+      )}
+    </div>
   );
 };
 
