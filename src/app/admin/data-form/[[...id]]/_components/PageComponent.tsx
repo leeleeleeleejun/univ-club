@@ -57,14 +57,14 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
 
   return (
     <div className={'p-[20px] gap-6 flex flex-col overflow-y-scroll'}>
-      <FormSection content={'동아리 로고 이미지 (선택)'}>
+      <FormSection content={'동아리 로고 이미지'}>
         <LogoImage
           setLogoFile={setLogoFile}
           logoPreview={logoPreview}
           setLogoPreview={setLogoPreview}
         />
       </FormSection>
-      <FormSection content={'캠퍼스'}>
+      <FormSection content={'캠퍼스 (필수)'}>
         <Select
           value={formData.campus}
           handleFieldChange={handleFieldChange}
@@ -72,7 +72,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           optionList={CAMPUS_OPTIONS}
         />
       </FormSection>
-      <FormSection content={'카테고리'}>
+      <FormSection content={'카테고리 (필수)'}>
         <Select
           value={formData.category}
           handleFieldChange={handleFieldChange}
@@ -80,7 +80,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           optionList={CategoryList}
         />
       </FormSection>
-      <FormSection content={'태그'}>
+      <FormSection content={'태그 (필수)'}>
         <Input
           handleFieldChange={handleFieldChange}
           clubDetailKey={'tag'}
@@ -88,7 +88,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           value={formData.tag}
         />
       </FormSection>
-      <FormSection content={'동아리 이름'}>
+      <FormSection content={'동아리 이름 (필수)'}>
         <Input
           handleFieldChange={handleFieldChange}
           clubDetailKey={'name'}
@@ -96,7 +96,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           value={formData.name}
         />
       </FormSection>
-      <FormSection content={'동아리 소개'}>
+      <FormSection content={'동아리 소개 (필수)'}>
         <textarea
           className={commonInputStyle + ' min-h-[200px]'}
           value={formData.introduction}

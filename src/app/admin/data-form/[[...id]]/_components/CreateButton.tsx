@@ -2,6 +2,7 @@ import ActionButton from '@/app/_components/ActionButton';
 import { CreateClub, updateLogoImg } from '../_lib';
 import { ClubFormData } from '../_components/PageComponent';
 import { useRouter } from 'next/navigation';
+import validateData from '@/app/admin/data-form/[[...id]]/utills/validateData';
 
 const CreateButton = ({
   formData,
@@ -14,6 +15,8 @@ const CreateButton = ({
 
   const submitData = async () => {
     try {
+      if (!validateData(formData)) return;
+
       // 클럽 생성
       const { id } = await CreateClub(JSON.stringify(formData));
 
