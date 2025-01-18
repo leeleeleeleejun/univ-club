@@ -1,5 +1,5 @@
 import ActionButton from '@/app/_components/ActionButton';
-import { updateClub, updateLogoImg } from '@/app/admin/data-form/_lib';
+import { updateClub, updateLogoImg } from '../_lib';
 import { ClubFormData } from '../_components/PageComponent';
 import { useRouter } from 'next/navigation';
 
