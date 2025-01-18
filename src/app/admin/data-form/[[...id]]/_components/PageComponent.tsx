@@ -134,8 +134,6 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           value={formData.recruitmentUrl}
           placeholder={''}
         />
-      </ContentWrap>
-      <ContentWrap content={'동아리 인스타그램 아이디'}>
       </FormSection>
       <FormSection content={'동아리 인스타그램 아이디'}>
         <Input
