@@ -1,8 +1,7 @@
 import { Club } from '@/types/club';
-
-const BASE_URL = process.env.BASE_URL;
+import API_PATH, { BASE_URL } from '@/constants/path';
 
 export const getClubs = async (): Promise<Club[]> => {
-  const response = await fetch(BASE_URL + '/api/v1/clubs');
+  const response = await fetch(BASE_URL + API_PATH.CLUB.GET.LIST);
   return response.json();
 };

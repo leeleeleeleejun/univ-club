@@ -10,7 +10,7 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
       className='rounded-xl border-solid border-[1.5px] border-gray-100 transition-colors hover:border-gray-200 hover:bg-gray-50'
     >
       <Link
-        href={`/club/${id}`}
+        href={`admin/club/${id}`}
         className='flex w-full justify-between p-5 gap-1'
       >
         <div>

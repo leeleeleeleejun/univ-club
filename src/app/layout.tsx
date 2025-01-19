@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Footer from '@/app/_components/Footer';
@@ -8,6 +8,11 @@ const pretendard = localFont({
   display: 'swap',
   weight: '45 920',
 });
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: '공주대 동아리',
@@ -20,6 +25,7 @@ export const metadata: Metadata = {
     url: `https://univ-club.vercel.app`,
     type: 'website',
   },
+  viewport: {},
 };
 
 export default function RootLayout({
@@ -32,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${pretendard.className} antialiased max-w-[500px] h-screen flex flex-col m-auto justify-between text-gray-800`}
       >
-        <div className={'h-full flex flex-col'}>{children}</div>
+        <div className={'grow flex flex-col'}>{children}</div>
         <Footer />
       </body>
     </html>

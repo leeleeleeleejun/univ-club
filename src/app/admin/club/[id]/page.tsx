@@ -1,20 +1,19 @@
-import ClubHeading from './_components/ClubHeading';
-import ClubIntroduction from './_components/ClubIntroduction';
-import { getClub } from './_lib';
 import LogoIcon from '@/assets/icons/logo.svg';
 import { getClubs } from '@/app/_lib';
 import { Metadata } from 'next';
-import ActionButton from '@/app/_components/ActionButton';
+import { getClub } from '@/app/club/[id]/_lib';
+import ClubHeading from '@/app/club/[id]/_components/ClubHeading';
+import ClubIntroduction from '@/app/club/[id]/_components/ClubIntroduction';
 import Link from 'next/link';
+
+import DeleteButton from '@/app/admin/club/[id]/_components/DeleteButton';
 
 export async function generateStaticParams() {
   const clubs = await getClubs();
-
   return clubs.map((club) => ({
     id: String(club.id),
   }));
 }
-
 // export const revalidate = 3600; // 1시간마다 데이터 체크 & 업데이트
 export const dynamicParams = true;
 
@@ -64,13 +63,12 @@ const ClubDetailPage = async ({
         membershipMethod={data.membershipMethod}
         instagram={data.instagram}
       />
-      {data.recruitmentUrl && (
-        <ActionButton>
-          <Link target='_blank' href={data.recruitmentUrl}>
-            지원하기
-          </Link>
-        </ActionButton>
-      )}
+      <div className={'flex justify-around text-white mt-auto font-semibold'}>
+        <button className={'bg-orange-400 p-4 rounded-xl'}>
+          <Link href={`/admin/data-form/${id}`}>수정하기</Link>
+        </button>
+        <DeleteButton id={id} />
+      </div>
     </div>
   );
 };

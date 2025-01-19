@@ -1,8 +1,7 @@
-import { ClubFeed, ClubInfo } from '@/types/club';
+import { ClubDetail } from '@/types/club';
+import API_PATH, { BASE_URL } from '@/constants/path';
 
-const BASE_URL = process.env.BASE_URL;
-
-export const getClub = async (clubId: number): Promise<ClubInfo & ClubFeed> => {
-  const response = await fetch(BASE_URL + `/api/v1/clubs/${clubId}`);
+export const getClub = async (clubId: string): Promise<ClubDetail> => {
+  const response = await fetch(BASE_URL + API_PATH.CLUB.GET.DETAIL(clubId));
   return response.json();
 };

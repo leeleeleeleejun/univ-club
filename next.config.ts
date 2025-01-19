@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'scontent-ssn1-1.cdninstagram.com',
-      'nimda.space',
-      'img.notionusercontent.com',
-    ],
+    domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS
+      ? process.env.NEXT_PUBLIC_IMAGE_DOMAINS.split(',')
+      : [],
   },
 };
 
