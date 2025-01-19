@@ -26,6 +26,7 @@ const LogoImage = ({
     }
 
     const previewURL = URL.createObjectURL(selectedFile);
+    setLogoFile(selectedFile);
     setLogoPreview(previewURL);
 
     return () => {
@@ -40,11 +41,12 @@ const LogoImage = ({
 
   return (
     <div className={'flex justify-around'}>
-      <div className='h-30 w-30 overflow-hidden rounded-full border-solid border-[1.5px] border-gray-100 md:h-20 md:w-20'>
+      <div className='w-[80px] h-[80px] relative md:w-20 md:h-20'>
         <Image
           src={logoPreview ? logoPreview : logo}
-          width={80}
-          height={80}
+          className='object-cover object-center rounded-full border-solid border-[1px] border-gray-100'
+          fill
+          sizes='80px'
           priority
           alt='logo'
         />
