@@ -26,12 +26,9 @@ const UpdateButton = ({
 
       // 이미지가 있는 경우에만 업로드
       if (logoFile) {
-        console.log('a');
         await updateLogoImg(logoFile, id);
       }
       if (!logoPreview && !logoFile) {
-        console.log('b');
-
         await updateLogoImg(null, id);
       }
       router.replace(`/admin/club/${id}`);
