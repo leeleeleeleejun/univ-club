@@ -1,5 +1,5 @@
 import LogoIcon from '@/assets/icons/logo.svg';
-import { getClubs } from '@/app/_lib';
+// import { getClubs } from '@/app/_lib';
 import { Metadata } from 'next';
 import { getClub } from '@/app/club/[id]/_lib';
 import ClubHeading from '@/app/club/[id]/_components/ClubHeading';
@@ -8,14 +8,14 @@ import Link from 'next/link';
 
 import DeleteButton from '@/app/admin/club/[id]/_components/DeleteButton';
 
-export async function generateStaticParams() {
-  const clubs = await getClubs();
-  return clubs.map((club) => ({
-    id: String(club.id),
-  }));
-}
-// export const revalidate = 3600; // 1시간마다 데이터 체크 & 업데이트
-export const dynamicParams = true;
+// export async function generateStaticParams() {
+//   const clubs = await getClubs();
+//   return clubs.map((club) => ({
+//     id: String(club.id),
+//   }));
+// }
+// // export const revalidate = 3600; // 1시간마다 데이터 체크 & 업데이트
+// export const dynamicParams = true;
 
 export async function generateMetadata({
   params,

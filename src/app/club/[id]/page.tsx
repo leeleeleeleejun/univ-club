@@ -2,21 +2,21 @@ import ClubHeading from './_components/ClubHeading';
 import ClubIntroduction from './_components/ClubIntroduction';
 import { getClub } from './_lib';
 import LogoIcon from '@/assets/icons/logo.svg';
-import { getClubs } from '@/app/_lib';
+// import { getClubs } from '@/app/_lib';
 import { Metadata } from 'next';
 import ActionButton from '@/app/_components/ActionButton';
 import Link from 'next/link';
 
-export async function generateStaticParams() {
-  const clubs = await getClubs();
-
-  return clubs.map((club) => ({
-    id: String(club.id),
-  }));
-}
+// export async function generateStaticParams() {
+//   const clubs = await getClubs();
+//
+//   return clubs.map((club) => ({
+//     id: String(club.id),
+//   }));
+// }
 
 // export const revalidate = 3600; // 1시간마다 데이터 체크 & 업데이트
-export const dynamicParams = true;
+// export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
