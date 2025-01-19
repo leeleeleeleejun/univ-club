@@ -8,7 +8,7 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
     ClubFeed;
 
   return (
-    <div className={' flex flex-col'}>
+    <div className={'flex flex-col mb-10'}>
       <Section title={'우리 동아리를 소개할게요'} content={introduction} />
       <Section
         title={'모집 방법'}
