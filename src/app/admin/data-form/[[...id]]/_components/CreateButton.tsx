@@ -1,8 +1,11 @@
+'use client';
+
 import ActionButton from '@/app/_components/ActionButton';
 import { CreateClub, updateLogoImg } from '../_lib';
 import { ClubFormData } from '../_components/PageComponent';
 import { useRouter } from 'next/navigation';
 import validateData from '@/app/admin/data-form/[[...id]]/utills/validateData';
+import { useState } from 'react';
 
 const CreateButton = ({
   formData,
@@ -12,8 +15,12 @@ const CreateButton = ({
   logoFile: File | null;
 }) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitData = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
     try {
       if (!validateData(formData)) return;
 
@@ -28,10 +35,16 @@ const CreateButton = ({
       router.refresh();
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false); // 제출 상태 해제
     }
   };
 
-  return <ActionButton onClick={submitData}>제출하기</ActionButton>;
+  return (
+    <ActionButton onClick={submitData}>
+      {isLoading ? '제출 중...' : '제출하기'}
+    </ActionButton>
+  );
 };
 
 export default CreateButton;

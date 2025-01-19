@@ -1,8 +1,11 @@
+'use client';
+
 import ActionButton from '@/app/_components/ActionButton';
 import { updateClub, updateLogoImg } from '../_lib';
 import { ClubFormData } from '../_components/PageComponent';
 import { useRouter } from 'next/navigation';
 import validateData from '@/app/admin/data-form/[[...id]]/utills/validateData';
+import { useState } from 'react';
 
 const UpdateButton = ({
   id,
@@ -16,8 +19,13 @@ const UpdateButton = ({
   logoPreview: string | null;
 }) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitData = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
+
     try {
       if (!validateData(formData)) return;
 
@@ -35,10 +43,16 @@ const UpdateButton = ({
       router.refresh();
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false); // 제출 상태 해제
     }
   };
 
-  return <ActionButton onClick={submitData}>수정하기</ActionButton>;
+  return (
+    <ActionButton onClick={submitData}>
+      {isLoading ? '수정 중...' : '수정하기'}
+    </ActionButton>
+  );
 };
 
 export default UpdateButton;
