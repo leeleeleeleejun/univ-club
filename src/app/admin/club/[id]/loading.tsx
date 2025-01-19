@@ -26,7 +26,7 @@ export default function Loading() {
   return (
     <div className='flex flex-col justify-center h-full border border-blue-300 rounded-md p-[20px]'>
       <div className='animate-pulse flex space-x-4'>
-        <div className='rounded-full bg-slate-200 h-24 w-24' />
+        <div className='rounded-full bg-slate-200 w-14 h-14 md:w-20 md:h-20' />
         <LoadingSection />
       </div>
       {[...Array(4)].map((_, index) => (
