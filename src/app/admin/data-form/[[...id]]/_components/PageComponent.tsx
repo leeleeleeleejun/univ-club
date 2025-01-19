@@ -95,7 +95,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'name'}
           placeholder={''}
           value={formData.name}
-          maxLength={16}
+          maxLength={20}
         />
       </FormSection>
       <FormSection content={'동아리 소개 (필수)'}>

@@ -11,7 +11,7 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
     >
       <Link
         href={`admin/club/${id}`}
-        className='flex w-full justify-between p-5'
+        className='flex w-full justify-between p-5 gap-1'
       >
         <div>
           <div className='font-bold text-xl'>{name}</div>

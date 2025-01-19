@@ -9,7 +9,10 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
       key={id}
       className='rounded-xl border-solid border-[1.5px] border-gray-100 transition-colors hover:border-gray-200 hover:bg-gray-50'
     >
-      <Link href={`/club/${id}`} className='flex w-full justify-between p-5'>
+      <Link
+        href={`/club/${id}`}
+        className='flex w-full justify-between p-5 gap-1'
+      >
         <div>
           <div className='font-bold text-xl'>{name}</div>
           <div className='flex items-center'>
