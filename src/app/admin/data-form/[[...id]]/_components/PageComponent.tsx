@@ -124,6 +124,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'recruitmentPeriod'}
           placeholder={'2월 1일 ~ 3월 10일'}
           value={formData.recruitmentPeriod}
+          maxLength={50}
         />
       </FormSection>
       <FormSection content={'동아리 모집방법'}>
@@ -132,6 +133,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'membershipMethod'}
           placeholder={'추후 네이버 폼으로 모집 예정'}
           value={formData.membershipMethod}
+          maxLength={100}
         />
       </FormSection>
       <FormSection content={'동아리 모집 url (구글폼, 사이트)'}>
@@ -140,6 +142,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'recruitmentUrl'}
           value={formData.recruitmentUrl}
           placeholder={''}
+          maxLength={1000}
         />
       </FormSection>
       <FormSection content={'동아리 인스타그램 아이디'}>
@@ -148,6 +151,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           clubDetailKey={'instagram'}
           placeholder={'knu-times'}
           value={formData.instagram}
+          maxLength={30}
         />
       </FormSection>
       <div className={'mt-10'}>
