@@ -12,11 +12,25 @@ const LogoImage = ({
   setLogoFile: Dispatch<SetStateAction<File | null>>;
 }) => {
   const fileHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0] || null;
-    setLogoFile(selectedFile);
-    if (selectedFile) {
-      setLogoPreview(URL.createObjectURL(selectedFile));
+    const selectedFile = e.target.files?.[0];
+
+    if (!selectedFile) {
+      return;
     }
+
+    const LOGO_IMG_MAX_SIZE_5MB = 5 * 1024 * 1024;
+    if (selectedFile.size > LOGO_IMG_MAX_SIZE_5MB) {
+      alert('파일첨부 사이즈는 5MB 이내로 가능합니다.');
+      e.target.value = '';
+      return;
+    }
+
+    const previewURL = URL.createObjectURL(selectedFile);
+    setLogoPreview(previewURL);
+
+    return () => {
+      URL.revokeObjectURL(previewURL);
+    };
   };
 
   const deleteImage = () => {
