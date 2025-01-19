@@ -16,7 +16,6 @@ import Link from 'next/link';
 // }
 
 // export const revalidate = 3600; // 1시간마다 데이터 체크 & 업데이트
-// export const dynamicParams = true;
 
 export async function generateMetadata({
   params,

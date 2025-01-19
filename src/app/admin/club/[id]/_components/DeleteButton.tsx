@@ -11,6 +11,7 @@ const DeleteButton = ({ id }: { id: string }) => {
     if (userAnswer) {
       await deleteClub(id);
       router.replace('/admin');
+      router.refresh();
     }
   };
 
