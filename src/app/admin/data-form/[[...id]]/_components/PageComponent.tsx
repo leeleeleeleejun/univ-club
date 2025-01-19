@@ -64,7 +64,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           setLogoPreview={setLogoPreview}
         />
       </FormSection>
-      <FormSection content={'캠퍼스 (필수)'}>
+      <FormSection content={'캠퍼스'} required>
         <Select
           value={formData.campus}
           handleFieldChange={handleFieldChange}
@@ -72,7 +72,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           optionList={CAMPUS_OPTIONS}
         />
       </FormSection>
-      <FormSection content={'카테고리 (필수)'}>
+      <FormSection content={'카테고리'} required>
         <Select
           value={formData.category}
           handleFieldChange={handleFieldChange}
@@ -80,7 +80,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           optionList={CategoryList}
         />
       </FormSection>
-      <FormSection content={'태그 (필수)'}>
+      <FormSection content={'태그'} required>
         <Input
           handleFieldChange={handleFieldChange}
           clubDetailKey={'tag'}
@@ -89,7 +89,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           maxLength={8}
         />
       </FormSection>
-      <FormSection content={'동아리 이름 (필수)'}>
+      <FormSection content={'동아리 이름'} required>
         <Input
           handleFieldChange={handleFieldChange}
           clubDetailKey={'name'}
@@ -98,7 +98,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           maxLength={20}
         />
       </FormSection>
-      <FormSection content={'동아리 소개 (필수)'}>
+      <FormSection content={'동아리 소개'} required>
         <textarea
           className={commonInputStyle + ' min-h-[200px]'}
           value={formData.introduction}
@@ -174,14 +174,19 @@ export default PageComponent;
 
 const FormSection = ({
   content,
+  required,
   children,
 }: {
   content: string;
+  required?: boolean;
   children: React.ReactNode;
 }) => {
   return (
     <div>
-      <h3 className={'font-semibold text-lg'}>{content}</h3>
+      <h3 className={'font-semibold text-lg'}>
+        {content}
+        {required && <span> (필수)</span>}
+      </h3>
       {children}
     </div>
   );
