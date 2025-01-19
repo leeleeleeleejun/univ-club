@@ -6,5 +6,14 @@ export const getClubs = async (): Promise<Club[]> => {
     cache: 'no-store',
   });
   const result = await response.json();
-  return result.sort((a: Club, b: Club) => a.campus.localeCompare(b.campus)); // Sorting by campus
+
+  return result.sort((a: Club, b: Club) => {
+    const campusComparison = a.campus.localeCompare(b.campus);
+
+    if (campusComparison === 0) {
+      return a.category.localeCompare(b.category);
+    }
+
+    return campusComparison;
+  });
 };
