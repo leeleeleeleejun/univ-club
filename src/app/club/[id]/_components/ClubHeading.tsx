@@ -9,11 +9,12 @@ export default function ClubHeading(info: ClubInfo) {
   return (
     <>
       <div className='flex gap-2'>
-        <div className='flex shrink-0 h-14 w-14 overflow-hidden rounded-full border-solid border-[1.5px] border-gray-100 md:h-20 md:w-20'>
+        <div className='flex shrink-0 w-14 h-14 relative md:w-20 md:h-20'>
           <Image
             src={logoImageUrl}
-            width={80}
-            height={80}
+            className='object-cover object-center rounded-full border-solid border-[1px] border-gray-100'
+            fill
+            sizes='80px'
             priority
             alt='logo'
           />
