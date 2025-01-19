@@ -25,6 +25,7 @@ const CreateButton = ({
         await updateLogoImg(logoFile, id);
       }
       router.replace(`/admin/club/${id}`);
+      router.refresh();
     } catch (error) {
       console.error(error);
     }

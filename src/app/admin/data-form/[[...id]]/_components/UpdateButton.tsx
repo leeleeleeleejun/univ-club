@@ -35,6 +35,7 @@ const UpdateButton = ({
         await updateLogoImg(null, id);
       }
       router.replace(`/admin/club/${id}`);
+      router.refresh();
     } catch (error) {
       console.error(error);
     }
