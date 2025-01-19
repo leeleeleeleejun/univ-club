@@ -5,5 +5,6 @@ export const getClubs = async (): Promise<Club[]> => {
   const response = await fetch(BASE_URL + API_PATH.CLUB.GET.LIST, {
     cache: 'no-store',
   });
-  return response.json();
+  const result = await response.json();
+  return result.sort((a: Club, b: Club) => a.campus.localeCompare(b.campus)); // Sorting by campus
 };
