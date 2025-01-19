@@ -5,7 +5,7 @@ import { updateClub, updateLogoImg } from '../_lib';
 import { ClubFormData } from '../_components/PageComponent';
 import { useRouter } from 'next/navigation';
 import validateData from '@/app/admin/data-form/[[...id]]/utills/validateData';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const UpdateButton = ({
   id,
@@ -19,11 +19,12 @@ const UpdateButton = ({
   logoPreview: string | null;
 }) => {
   const router = useRouter();
+  const isSubmitting = useRef(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const submitData = async () => {
-    if (isLoading) return;
-
+    if (isSubmitting.current) return;
+    isSubmitting.current = true;
     setIsLoading(true);
 
     try {
@@ -44,12 +45,13 @@ const UpdateButton = ({
     } catch (error) {
       console.error(error);
     } finally {
-      setIsLoading(false); // 제출 상태 해제
+      isSubmitting.current = false;
+      setIsLoading(false);
     }
   };
 
   return (
-    <ActionButton onClick={submitData}>
+    <ActionButton onClick={submitData} disabled={isSubmitting.current}>
       {isLoading ? '수정 중...' : '수정하기'}
     </ActionButton>
   );
