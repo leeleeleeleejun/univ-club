@@ -26,7 +26,7 @@ const Input = ({
       />
       {maxLength && (
         <div className={'text-sm text-right font-semibold text-gray-400'}>
-          {value.length} / {maxLength}
+          {value?.length || 0} / {maxLength}
         </div>
       )}
     </div>
