@@ -40,7 +40,7 @@ const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
         <div>총 {ClubsLength}개의 동아리</div>
         <DropDown onFilterAction={onFilter} />
       </div>
-      <div className='px-3 py-2 rounded-full flex gap-2 overflow-x-auto bg-gray-50'>
+      <div className='px-3 py-2 rounded-full flex justify-around gap-2 overflow-x-auto bg-gray-50'>
         <Fragment>
           <button
             onClick={handleReset}

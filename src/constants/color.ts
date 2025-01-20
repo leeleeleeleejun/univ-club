@@ -1,26 +1,25 @@
 import { DeptCaptionColor } from '@/types/club';
 
 export const CategoryList = [
+  '공연',
   '봉사',
-  '음악',
-  // '연행예술',
-  '미술',
+  '예술',
   '종교',
   '체육',
+  '취미',
   '학술',
-  '기타',
 ];
 
 export const deptCaptionColor: DeptCaptionColor = {
   전체: 'text-red-500',
-  봉사: 'text-pink-500',
-  음악: 'text-orange-500',
-  // 연행예술: 'text-yellow-500',
-  미술: 'text-emerald-500',
-  종교: 'text-cyan-500',
-  체육: 'text-blue-500',
+  공연: 'text-pink-500',
+  봉사: 'text-orange-500',
+  예술: 'text-yellow-500',
+  종교: 'text-emerald-500',
+  체육: 'text-cyan-500',
+  취미: 'text-blue-500',
   학술: 'text-purple-500',
-  기타: 'text-zinc-500',
+  // 기타: 'text-zinc-500',
 };
 
 export const campusColor: DeptCaptionColor = {
