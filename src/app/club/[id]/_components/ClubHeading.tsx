@@ -21,16 +21,10 @@ export default function ClubHeading(info: ClubInfo) {
         </div>
         <div className=''>
           <h1 className='shrink-0 font-bold text-2xl'>{name}</h1>
-          <div className='flex items-center mt-0.5'>
-            <div
-              className={`rounded-lg text-base font-semibold md:text-lg ${deptCaptionColor[category]}`}
-            >
-              {category}
-            </div>
-            <div className='px-1.5 font-medium text-gray-300 text-lg'>|</div>
-            <div className='rounded-lg font-semibold text-gray-500 text-lg'>
-              {tag}
-            </div>
+          <div className='flex items-center mt-0.5 text-base font-semibold md:text-lg'>
+            <div className={`${deptCaptionColor[category]}`}>{category}</div>
+            <div className='px-1.5 font-medium text-gray-300'>|</div>
+            <div className='text-gray-500'>{tag}</div>
           </div>
         </div>
         <CampusTag campus={campus} />
