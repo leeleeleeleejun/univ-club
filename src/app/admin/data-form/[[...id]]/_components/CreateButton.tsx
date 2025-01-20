@@ -37,6 +37,8 @@ const CreateButton = ({
       router.refresh();
     } catch (error) {
       console.error(error);
+      isSubmitting.current = false;
+      setIsLoading(false);
     }
   };
 
