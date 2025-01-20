@@ -44,9 +44,6 @@ const UpdateButton = ({
       router.refresh();
     } catch (error) {
       console.error(error);
-    } finally {
-      isSubmitting.current = false;
-      setIsLoading(false);
     }
   };
 
