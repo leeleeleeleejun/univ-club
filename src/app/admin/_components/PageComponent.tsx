@@ -1,28 +1,13 @@
 'use client';
-import { useState } from 'react';
 import SearchBar from '@/app/_components/SearchBar';
 import ClubCard from '@/app/admin/_components/ClubCard';
 import { Club } from '@/types/club';
 import ActionButton from '@/app/_components/ActionButton';
 import Link from 'next/link';
+import useFilter from '@/app/admin/_hooks/useFilter';
 
 const PageComponent = ({ data }: { data: Club[] }) => {
-  const [filterData, setFilterData] = useState(data);
-
-  const handleSearch = (value: string) => {
-    if (!value.trim()) {
-      return setFilterData(data);
-    }
-    let result = data;
-    const term = value.trim().toLowerCase();
-    result = result.filter(
-      (club) =>
-        club.name.toLowerCase().includes(term) ||
-        club.category.toLowerCase().includes(term) ||
-        club.tag.toLowerCase().includes(term)
-    );
-    setFilterData(result);
-  };
+  const { filterData, handleSearch } = useFilter(data);
 
   return (
     <>
