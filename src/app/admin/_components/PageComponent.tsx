@@ -23,6 +23,7 @@ const PageComponent = ({ data }: { data: Club[] }) => {
     );
     setFilterData(result);
   };
+
   return (
     <>
       <div className={'sticky flex items-center justify-between'}>

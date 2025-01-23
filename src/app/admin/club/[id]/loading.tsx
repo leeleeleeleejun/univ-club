@@ -1,5 +1,3 @@
-import React from 'react';
-
 const LoadingLine = ({ colSpan = 1 }) => (
   <div className={`h-2 bg-slate-200 rounded col-span-${colSpan}`} />
 );

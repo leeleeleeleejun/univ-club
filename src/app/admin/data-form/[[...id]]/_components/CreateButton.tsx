@@ -21,8 +21,8 @@ const CreateButton = ({
   const submitData = async () => {
     if (isSubmitting.current) return;
     isSubmitting.current = true;
-
     setIsLoading(true);
+
     try {
       if (!validateData(formData)) return;
 
@@ -33,6 +33,7 @@ const CreateButton = ({
       if (logoFile) {
         await updateLogoImg(logoFile, id);
       }
+
       router.replace(`/admin/club/${id}`);
       router.refresh();
     } catch (error) {
