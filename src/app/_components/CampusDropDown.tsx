@@ -23,7 +23,7 @@ const campusOptions: CampusOption[] = [
   { value: '예산캠', label: '예산캠', shortLabel: '예산' },
 ];
 
-export default function DropDown({
+export default function CampusDropDown({
   onFilterAction,
 }: {
   onFilterAction: (filterType: FilterType, value: string) => void;

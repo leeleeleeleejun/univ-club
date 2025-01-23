@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { FilterType } from '@/types/club';
 import { CategoryList, deptCaptionColor } from '@/constants/color';
-import DropDown from '@/app/_components/DropDown';
+import CampusDropDown from '@/app/_components/CampusDropDown';
 
 interface FilterBarProps {
   ClubsLength: number;
@@ -38,7 +38,7 @@ const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
         }
       >
         <div>총 {ClubsLength}개의 동아리</div>
-        <DropDown onFilterAction={onFilter} />
+        <CampusDropDown onFilterAction={onFilter} />
       </div>
       <div className='px-3 py-2 rounded-full flex justify-around gap-2 overflow-x-auto bg-gray-50'>
         <Fragment>
