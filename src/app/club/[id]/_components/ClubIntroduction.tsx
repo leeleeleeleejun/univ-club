@@ -51,12 +51,10 @@ const Section = ({ title, content }: { title: string; content: string }) => {
       <h3 className={'mt-6 text-lg font-bold md:mt-8 md:text-xl'}>{title}</h3>
       <div
         className={
-          'mt-1 bg-white text-base font-medium text-gray-500 md:mt-2 md:text-lg'
+          'mt-1 bg-white text-base font-medium text-gray-500 whitespace-pre-wrap md:mt-2 md:text-lg'
         }
       >
-        {content
-          ?.split('\n')
-          .map((line: string, index: number) => <p key={index}>{line}</p>)}
+        {content}
       </div>
     </section>
   );
