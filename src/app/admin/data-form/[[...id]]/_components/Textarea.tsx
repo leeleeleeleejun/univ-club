@@ -7,19 +7,19 @@ const Textarea = ({
   clubDetailKey,
   handleFieldChange,
   maxLength,
-  minHeightStyle,
+  addStyles,
 }: {
   value: string;
   placeholder: string;
   clubDetailKey: ClubDetailKey;
   handleFieldChange: (name: ClubDetailKey, data: string) => void;
   maxLength?: number;
-  minHeightStyle: string;
+  addStyles?: string;
 }) => {
   return (
     <div>
       <textarea
-        className={commonInputStyle + ' ' + minHeightStyle}
+        className={commonInputStyle + ' ' + addStyles}
         placeholder={placeholder}
         value={value || ''}
         onChange={(event) => {

@@ -114,7 +114,7 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           }
           handleFieldChange={handleFieldChange}
           maxLength={2000}
-          minHeightStyle={'min-h-[200px]'}
+          addStyles={'min-h-[200px]'}
         />
       </FormSection>
       <FormSection content={'회장단(관계자) 번호'}>
@@ -124,25 +124,27 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           placeholder={'OOO : 010-1234-5678\n' + 'OOO : 010-1234-5678\n'}
           handleFieldChange={handleFieldChange}
           maxLength={100}
-          minHeightStyle={'min-h-[100px]'}
+          addStyles={'min-h-[100px]'}
         />
       </FormSection>
       <FormSection content={'동아리 모집기간'}>
-        <Input
+        <Textarea
           handleFieldChange={handleFieldChange}
           clubDetailKey={'recruitmentPeriod'}
           placeholder={'2월 1일 ~ 3월 10일'}
           value={formData.recruitmentPeriod}
           maxLength={50}
+          addStyles={'min-h-[100px]'}
         />
       </FormSection>
       <FormSection content={'동아리 모집방법'}>
-        <Input
+        <Textarea
           handleFieldChange={handleFieldChange}
           clubDetailKey={'membershipMethod'}
           placeholder={'추후 네이버 폼으로 모집 예정'}
           value={formData.membershipMethod}
           maxLength={100}
+          addStyles={'min-h-[100px]'}
         />
       </FormSection>
       <FormSection content={'동아리 모집 url (구글폼, 사이트)'}>
