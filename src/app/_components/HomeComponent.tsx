@@ -18,14 +18,14 @@ export default function Home({ initialData }: HomeProps) {
 
   return (
     <>
-      <div className='flex flex-col sticky top-0 bg-white'>
+      <div className='flex flex-col sticky top-0 bg-white pb-5'>
         <SearchBar handleSearch={handleSearch} />
         <FilterBar
           ClubsLength={filteredAndSearchedData.length}
           onFilter={handleFilter}
         />
       </div>
-      <ul className='flex flex-col gap-4 p-5 overflow-y-scroll'>
+      <ul className='flex flex-col gap-4 px-5 pb-5 overflow-y-scroll'>
         {filteredAndSearchedData.map((club) => (
           <ClubCard
             key={club.id}
