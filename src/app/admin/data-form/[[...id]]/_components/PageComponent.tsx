@@ -1,6 +1,6 @@
 'use client';
 
-import { CategoryList } from '@/constants/color';
+import { CategoryList } from '@/constants/category';
 import { ClubDetail, ClubDetailKey } from '@/types/club';
 import { useEffect, useState } from 'react';
 import Input from './Input';
@@ -9,6 +9,7 @@ import Select from './Select';
 import CreateButton from '@/app/admin/data-form/[[...id]]/_components/CreateButton';
 import UpdateButton from '@/app/admin/data-form/[[...id]]/_components/UpdateButton';
 import Textarea from '@/app/admin/data-form/[[...id]]/_components/Textarea';
+import { CAMPUS_OPTIONS } from '@/constants/campus';
 
 export interface ClubFormData {
   name: string;
@@ -35,8 +36,6 @@ const INITIAL_FORM_STATE: ClubFormData = {
   recruitmentUrl: '',
   contact: '',
 };
-
-const CAMPUS_OPTIONS = ['신관캠', '천안캠', '예산캠'];
 
 interface ClubFormProps {
   initialData?: ClubDetail;

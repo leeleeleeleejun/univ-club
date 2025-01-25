@@ -1,15 +1,5 @@
 import { DeptCaptionColor } from '@/types/club';
 
-export const CategoryList = [
-  '공연',
-  '봉사',
-  '예술',
-  '종교',
-  '체육',
-  '취미',
-  '학술',
-];
-
 export const deptCaptionColor: DeptCaptionColor = {
   전체: 'text-red-500',
   공연: 'text-pink-500',
