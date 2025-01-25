@@ -1,7 +1,8 @@
 import { Fragment, useState } from 'react';
 import { FilterType } from '@/types/club';
-import { CategoryList, deptCaptionColor } from '@/constants/color';
+import { deptCaptionColor } from '@/constants/color';
 import CampusDropDown from '@/app/_components/CampusDropDown';
+import { CategoryList } from '@/constants/category';
 
 interface FilterBarProps {
   ClubsLength: number;
