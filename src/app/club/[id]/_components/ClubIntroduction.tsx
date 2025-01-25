@@ -4,12 +4,18 @@ import Image from 'next/image';
 import Instagram from '@/assets/icons/instagram.svg';
 
 const ClubIntroduction = (ClubFeed: ClubFeed) => {
-  const { recruitmentPeriod, introduction, membershipMethod, instagram } =
-    ClubFeed;
+  const {
+    recruitmentPeriod,
+    introduction,
+    membershipMethod,
+    instagram,
+    contact,
+  } = ClubFeed;
 
   return (
     <div className={'flex flex-col mb-10'}>
       <Section title={'우리 동아리를 소개할게요'} content={introduction} />
+      {contact && <Section title={'회장단(관계자) 번호'} content={contact} />}
       <Section
         title={'모집 방법'}
         content={membershipMethod || '추후 공개하도록 하겠습니다!'}
@@ -26,6 +32,7 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
         >
           Instagram
           <Link
+            className={'w-fit'}
             href={`https://www.instagram.com/${instagram}`}
             target={'_blank'}
           >

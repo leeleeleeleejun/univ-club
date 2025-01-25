@@ -3,11 +3,12 @@
 import { CategoryList } from '@/constants/color';
 import { ClubDetail, ClubDetailKey } from '@/types/club';
 import { useEffect, useState } from 'react';
-import Input, { commonInputStyle } from './Input';
+import Input from './Input';
 import LogoImage from '@/app/admin/data-form/[[...id]]/_components/LogoImage';
 import Select from './Select';
 import CreateButton from '@/app/admin/data-form/[[...id]]/_components/CreateButton';
 import UpdateButton from '@/app/admin/data-form/[[...id]]/_components/UpdateButton';
+import Textarea from '@/app/admin/data-form/[[...id]]/_components/Textarea';
 
 export interface ClubFormData {
   name: string;
@@ -19,6 +20,7 @@ export interface ClubFormData {
   membershipMethod: string;
   instagram: string;
   recruitmentUrl: string;
+  contact: string;
 }
 
 const INITIAL_FORM_STATE: ClubFormData = {
@@ -31,6 +33,7 @@ const INITIAL_FORM_STATE: ClubFormData = {
   membershipMethod: '',
   instagram: '',
   recruitmentUrl: '',
+  contact: '',
 };
 
 const CAMPUS_OPTIONS = ['신관캠', '천안캠', '예산캠'];
@@ -99,9 +102,9 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
         />
       </FormSection>
       <FormSection content={'동아리 소개'} required>
-        <textarea
-          className={commonInputStyle + ' min-h-[200px]'}
+        <Textarea
           value={formData.introduction}
+          clubDetailKey={'introduction'}
           placeholder={
             '다양한 활동을 하며 진로를 찾아가는 진로탐색 동아리 『제로』 입니다!\n' +
             '\n' +
@@ -109,14 +112,20 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
             '\n' +
             '창업동아리 및 새로운 취미 탐색 모집시기: 학기마다 사전에 공지 계획'
           }
-          onChange={(event) => {
-            handleFieldChange('introduction', event.target.value);
-          }}
+          handleFieldChange={handleFieldChange}
           maxLength={2000}
+          minHeightStyle={'min-h-[200px]'}
         />
-        <div className={'text-sm text-right font-semibold text-gray-400'}>
-          {formData.introduction.length} / {2000}
-        </div>
+      </FormSection>
+      <FormSection content={'회장단(관계자) 번호'}>
+        <Textarea
+          value={formData.contact}
+          clubDetailKey={'contact'}
+          placeholder={'OOO : 010-1234-5678\n' + 'OOO : 010-1234-5678\n'}
+          handleFieldChange={handleFieldChange}
+          maxLength={100}
+          minHeightStyle={'min-h-[100px]'}
+        />
       </FormSection>
       <FormSection content={'동아리 모집기간'}>
         <Input

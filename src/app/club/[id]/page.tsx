@@ -62,6 +62,7 @@ const ClubDetailPage = async ({
         introduction={data.introduction}
         membershipMethod={data.membershipMethod}
         instagram={data.instagram}
+        contact={data.contact}
       />
       {data.recruitmentUrl && (
         <ActionButton>

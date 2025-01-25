@@ -17,6 +17,7 @@ export interface ClubInfo {
 export interface ClubFeed {
   recruitmentPeriod: string;
   introduction: string;
+  contact: string;
   membershipMethod: string;
   instagram: string;
 }
@@ -34,7 +35,8 @@ export type ClubDetailKey =
   | 'introduction'
   | 'membershipMethod'
   | 'instagram'
-  | 'recruitmentUrl';
+  | 'recruitmentUrl'
+  | 'contact';
 
 export type DeptCaptionColor = {
   [name: string]: string;

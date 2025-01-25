@@ -61,6 +61,7 @@ const ClubDetailPage = async ({
         introduction={data.introduction}
         membershipMethod={data.membershipMethod}
         instagram={data.instagram}
+        contact={data.contact}
       />
       <div className={'flex justify-around text-white mt-auto font-semibold'}>
         <button className={'bg-orange-400 p-4 rounded-xl'}>
