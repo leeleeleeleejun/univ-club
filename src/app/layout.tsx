@@ -44,7 +44,7 @@ export default function RootLayout({
         className={`${pretendard.className} antialiased max-w-[500px] h-screen flex flex-col m-auto justify-between text-gray-800`}
       >
         <div className={'grow flex flex-col'}>{children}</div>
-        <Analytics mode={isDevelopment} />;
+        <Analytics mode={isDevelopment} />
         <Footer />
       </body>
     </html>
