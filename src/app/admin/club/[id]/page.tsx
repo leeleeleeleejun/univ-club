@@ -64,9 +64,12 @@ const ClubDetailPage = async ({
         contact={data.contact}
       />
       <div className={'flex justify-around text-white mt-auto font-semibold'}>
-        <button className={'bg-orange-400 p-4 rounded-xl'}>
-          <Link href={`/admin/data-form/${id}`}>수정하기</Link>
-        </button>
+        <Link
+          className={'bg-orange-400 p-4 rounded-xl'}
+          href={`/admin/data-form/${id}`}
+        >
+          수정하기
+        </Link>
         <DeleteButton id={id} />
       </div>
     </div>
