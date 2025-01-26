@@ -4,11 +4,6 @@ import './globals.css';
 import Footer from '@/app/_components/Footer';
 import { Analytics } from '@vercel/analytics/next';
 
-const isDevelopment =
-  process.env.NEXT_ANALYTICS_MODE === 'development'
-    ? 'development'
-    : 'production';
-
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
   display: 'swap',
@@ -44,7 +39,7 @@ export default function RootLayout({
         className={`${pretendard.className} antialiased max-w-[500px] h-screen flex flex-col m-auto justify-between text-gray-800`}
       >
         <div className={'grow flex flex-col'}>{children}</div>
-        <Analytics mode={isDevelopment} />
+        <Analytics />
         <Footer />
       </body>
     </html>
