@@ -66,7 +66,7 @@ const ClubDetailPage = async ({
       />
       {data.recruitmentUrl && (
         <ActionButton>
-          <Link target='_blank' href={data.recruitmentUrl}>
+          <Link target='_blank' href={data.recruitmentUrl} className={'w-full'}>
             지원하기
           </Link>
         </ActionButton>
