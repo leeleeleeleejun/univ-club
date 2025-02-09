@@ -2,6 +2,7 @@ import { ClubFeed } from '@/types/club';
 import Link from 'next/link';
 import Image from 'next/image';
 import Instagram from '@/assets/icons/instagram.svg';
+import LinkifyText from '@/app/club/[id]/_components/LinkifyText';
 
 const ClubIntroduction = (ClubFeed: ClubFeed) => {
   const {
@@ -14,7 +15,11 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
 
   return (
     <div className={'flex flex-col mb-10'}>
-      <Section title={'우리 동아리를 소개할게요'} content={introduction} />
+      <Section
+        title={'우리 동아리를 소개할게요'}
+        content={introduction}
+        useLinkifyText
+      />
       {contact && <Section title={'회장단(관계자) 번호'} content={contact} />}
       <Section
         title={'모집 방법'}
@@ -45,7 +50,15 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
 };
 export default ClubIntroduction;
 
-const Section = ({ title, content }: { title: string; content: string }) => {
+const Section = ({
+  title,
+  content,
+  useLinkifyText = false,
+}: {
+  title: string;
+  content: string;
+  useLinkifyText?: boolean;
+}) => {
   return (
     <section>
       <h3 className={'mt-6 text-lg font-bold md:mt-8 md:text-xl'}>{title}</h3>
@@ -54,7 +67,7 @@ const Section = ({ title, content }: { title: string; content: string }) => {
           'mt-1 bg-white text-base font-medium text-gray-500 whitespace-pre-wrap md:mt-2 md:text-lg'
         }
       >
-        {content}
+        {useLinkifyText ? <LinkifyText text={content} /> : content}
       </div>
     </section>
   );
