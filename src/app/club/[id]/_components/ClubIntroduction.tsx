@@ -24,6 +24,7 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
       <Section
         title={'모집 방법'}
         content={membershipMethod || '추후 공개하도록 하겠습니다!'}
+        useLinkifyText
       />
       <Section
         title={'모집 기간'}
