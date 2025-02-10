@@ -7,39 +7,23 @@ import {
   DropdownItem,
 } from '@nextui-org/dropdown';
 import { FilterType } from '@/types/club';
-import { useState } from 'react';
 import { campusTextColor } from '@/constants/color';
 
-interface CampusOption {
-  value: string;
-  label: string;
-  shortLabel: string;
-}
-
-const campusOptions: CampusOption[] = [
-  { value: '', label: '전체', shortLabel: '전체' },
-  { value: '신관캠', label: '신관캠', shortLabel: '신관' },
-  { value: '천안캠', label: '천안캠', shortLabel: '천안' },
-  { value: '예산캠', label: '예산캠', shortLabel: '예산' },
-];
+const campusOptions = ['', '신관캠', '천안캠', '예산캠'];
 
 export default function CampusDropDown({
   onFilterAction,
+  activeCampus,
 }: {
   onFilterAction: (filterType: FilterType, value: string) => void;
+  activeCampus: string;
 }) {
-  const [selectedCampus, setSelectedCampus] = useState<CampusOption>(
-    campusOptions[0]
-  );
-
   return (
     <Dropdown>
       <DropdownTrigger>
         <button>
-          <span
-            className={`mr-1 ${campusTextColor[selectedCampus.shortLabel]}`}
-          >
-            {selectedCampus.shortLabel}
+          <span className={`mr-1 ${campusTextColor[activeCampus]}`}>
+            {activeCampus.slice(0, 2) || '전체'}
           </span>
           캠퍼스
         </button>
@@ -47,13 +31,13 @@ export default function CampusDropDown({
       <DropdownMenu aria-label='Campus Selection'>
         {campusOptions.map((option) => (
           <DropdownItem
-            key={option.value}
+            key={option}
             onPress={() => {
-              onFilterAction('campus', option.value);
-              setSelectedCampus(option);
+              onFilterAction('campus', option);
+              // setSelectedCampus(option);
             }}
           >
-            {option.label}
+            {option || '전체'}
           </DropdownItem>
         ))}
       </DropdownMenu>

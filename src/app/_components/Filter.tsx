@@ -1,8 +1,9 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { FilterType } from '@/types/club';
 import { deptCaptionColor } from '@/constants/color';
 import CampusDropDown from '@/app/_components/CampusDropDown';
 import { CategoryList } from '@/constants/category';
+import { useFilterStore } from '@/store/filter';
 
 interface FilterBarProps {
   ClubsLength: number;
@@ -10,25 +11,10 @@ interface FilterBarProps {
 }
 
 const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
-  const [activeCategories, setActiveCategories] = useState<string[]>([]);
-
+  const { filters } = useFilterStore();
   // 필터 초기화 함수
   const handleReset = () => {
-    setActiveCategories([]);
     onFilter('category', ''); // 빈 문자열을 보내 필터 초기화
-  };
-
-  const handleCategorySelect = (category: string) => {
-    setActiveCategories((prev) => {
-      if (prev.includes(category)) {
-        // 이미 선택된 카테고리면 제거
-        const newCategories = prev.filter((cat) => cat !== category);
-        return newCategories;
-      } else {
-        // 새로운 카테고리 추가
-        return [...prev, category];
-      }
-    });
   };
 
   return (
@@ -39,13 +25,16 @@ const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
         }
       >
         <div>총 {ClubsLength}개의 동아리</div>
-        <CampusDropDown onFilterAction={onFilter} />
+        <CampusDropDown
+          onFilterAction={onFilter}
+          activeCampus={filters.campus}
+        />
       </div>
       <div className='px-3 py-2 rounded-full flex justify-around gap-2 overflow-x-auto bg-gray-50'>
         <Fragment>
           <button
             onClick={handleReset}
-            className={`rounded-lg text-sm font-semibold whitespace-nowrap ${activeCategories.length === 0 && deptCaptionColor['전체']}`}
+            className={`rounded-lg text-sm font-semibold whitespace-nowrap ${filters.category.length === 0 && deptCaptionColor['전체']}`}
           >
             전체
           </button>
@@ -56,8 +45,7 @@ const FilterBar = ({ ClubsLength, onFilter }: FilterBarProps) => {
             <CategoryTabBtn
               category={category}
               onFilter={onFilter}
-              handleCategorySelect={handleCategorySelect}
-              isActive={activeCategories.includes(category)}
+              isActive={filters.category.includes(category)}
             />
             {index !== CategoryList.length - 1 && (
               <div className='flex items-center font-semibold text-gray-300'>
@@ -77,18 +65,15 @@ const CategoryTabBtn = ({
   category,
   isActive,
   onFilter,
-  handleCategorySelect,
 }: Readonly<{
   category: string;
   isActive: boolean;
   onFilter: (filterType: FilterType, value: string) => void;
-  handleCategorySelect: (category: string) => void;
 }>) => {
   return (
     <button
       onClick={() => {
         onFilter('category', category);
-        handleCategorySelect(category);
       }}
       className={`rounded-lg text-sm font-semibold whitespace-nowrap ${isActive && deptCaptionColor[category]}`}
     >
