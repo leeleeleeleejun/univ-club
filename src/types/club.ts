@@ -20,23 +20,14 @@ export interface ClubFeed {
   contact: string;
   membershipMethod: string;
   instagram: string;
+  youtubeUrl: string;
+  homepageUrl: string;
 }
 
 export type ClubDetail = ClubInfo &
   ClubFeed & { id: string; recruitmentUrl: string };
 
-export type ClubDetailKey =
-  | 'logoImageUrl'
-  | 'name'
-  | 'category'
-  | 'tag'
-  | 'campus'
-  | 'recruitmentPeriod'
-  | 'introduction'
-  | 'membershipMethod'
-  | 'instagram'
-  | 'recruitmentUrl'
-  | 'contact';
+export type ClubDetailKey = keyof ClubDetail;
 
 export type DeptCaptionColor = {
   [name: string]: string;

@@ -1,7 +1,10 @@
 import { ClubFeed } from '@/types/club';
 import Link from 'next/link';
 import Image from 'next/image';
-import Instagram from '@/assets/icons/instagram.svg';
+import InstagramIcon from '@/assets/icons/instagram.svg';
+import YoutubeIcon from '@/assets/icons/youtube.svg';
+import HomeIcon from '@/assets/icons/home.svg';
+
 import LinkifyText from '@/app/club/[id]/_components/LinkifyText';
 
 const ClubIntroduction = (ClubFeed: ClubFeed) => {
@@ -9,8 +12,10 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
     recruitmentPeriod,
     introduction,
     membershipMethod,
-    instagram,
     contact,
+    instagram,
+    youtubeUrl,
+    homepageUrl,
   } = ClubFeed;
 
   return (
@@ -30,22 +35,31 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
         title={'모집 기간'}
         content={recruitmentPeriod || '현재 모집을 하고 있지 않아요 🥲'}
       />
-      {instagram && (
-        <div
-          className={
-            'flex flex-col gap-1 mt-6 text-lg font-bold md:mt-8 md:text-xl'
-          }
-        >
-          Instagram
-          <Link
-            className={'w-fit'}
-            href={`https://www.instagram.com/${instagram}`}
-            target={'_blank'}
-          >
-            <Image src={Instagram} alt={''} width={30} />
-          </Link>
+
+      <section>
+        <h3 className={'mt-6 text-lg font-bold md:mt-8 md:text-xl'}>SNS</h3>
+        <div className='mt-1 flex gap-4'>
+          {instagram && (
+            <Link
+              className={'w-fit'}
+              href={`https://www.instagram.com/${instagram}`}
+              target={'_blank'}
+            >
+              <Image src={InstagramIcon} alt={''} width={30} />
+            </Link>
+          )}
+          {youtubeUrl && (
+            <Link className={'w-fit'} href={youtubeUrl} target={'_blank'}>
+              <Image src={YoutubeIcon} alt={''} width={30} />
+            </Link>
+          )}
+          {homepageUrl && (
+            <Link className={'w-fit'} href={homepageUrl} target={'_blank'}>
+              <Image src={HomeIcon} alt={''} width={30} />
+            </Link>
+          )}
         </div>
-      )}
+      </section>
     </div>
   );
 };
