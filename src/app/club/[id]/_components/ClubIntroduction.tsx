@@ -35,31 +35,32 @@ const ClubIntroduction = (ClubFeed: ClubFeed) => {
         title={'모집 기간'}
         content={recruitmentPeriod || '현재 모집을 하고 있지 않아요 🥲'}
       />
-
-      <section>
-        <h3 className={'mt-6 text-lg font-bold md:mt-8 md:text-xl'}>SNS</h3>
-        <div className='mt-1 flex gap-4'>
-          {instagram && (
-            <Link
-              className={'w-fit'}
-              href={`https://www.instagram.com/${instagram}`}
-              target={'_blank'}
-            >
-              <Image src={InstagramIcon} alt={''} width={30} />
-            </Link>
-          )}
-          {youtubeUrl && (
-            <Link className={'w-fit'} href={youtubeUrl} target={'_blank'}>
-              <Image src={YoutubeIcon} alt={''} width={30} />
-            </Link>
-          )}
-          {homepageUrl && (
-            <Link className={'w-fit'} href={homepageUrl} target={'_blank'}>
-              <Image src={HomeIcon} alt={''} width={30} />
-            </Link>
-          )}
-        </div>
-      </section>
+      {(instagram || youtubeUrl || homepageUrl) && (
+        <section>
+          <h3 className={'mt-6 text-lg font-bold md:mt-8 md:text-xl'}>SNS</h3>
+          <div className='mt-1 flex gap-4'>
+            {instagram && (
+              <Link
+                className={'w-fit'}
+                href={`https://www.instagram.com/${instagram}`}
+                target={'_blank'}
+              >
+                <Image src={InstagramIcon} alt={''} width={30} />
+              </Link>
+            )}
+            {youtubeUrl && (
+              <Link className={'w-fit'} href={youtubeUrl} target={'_blank'}>
+                <Image src={YoutubeIcon} alt={''} width={30} />
+              </Link>
+            )}
+            {homepageUrl && (
+              <Link className={'w-fit'} href={homepageUrl} target={'_blank'}>
+                <Image src={HomeIcon} alt={''} width={30} />
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
     </div>
   );
 };
