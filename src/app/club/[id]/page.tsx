@@ -63,9 +63,11 @@ const ClubDetailPage = async ({
         membershipMethod={data.membershipMethod}
         instagram={data.instagram}
         contact={data.contact}
+        youtubeUrl={data.youtubeUrl}
+        homepageUrl={data.homepageUrl}
       />
       {data.recruitmentUrl && (
-        <Link target='_blank' href={data.recruitmentUrl}>
+        <Link target='_blank' href={data.recruitmentUrl} className={'mt-auto'}>
           <ActionButton>지원하기</ActionButton>
         </Link>
       )}

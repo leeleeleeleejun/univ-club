@@ -62,6 +62,8 @@ const ClubDetailPage = async ({
         membershipMethod={data.membershipMethod}
         instagram={data.instagram}
         contact={data.contact}
+        youtubeUrl={data.youtubeUrl}
+        homepageUrl={data.homepageUrl}
       />
       <div className={'flex justify-around text-white mt-auto font-semibold'}>
         <Link

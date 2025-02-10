@@ -22,6 +22,8 @@ export interface ClubFormData {
   instagram: string;
   recruitmentUrl: string;
   contact: string;
+  youtubeUrl: string;
+  homepageUrl: string;
 }
 
 const INITIAL_FORM_STATE: ClubFormData = {
@@ -35,6 +37,8 @@ const INITIAL_FORM_STATE: ClubFormData = {
   instagram: '',
   recruitmentUrl: '',
   contact: '',
+  youtubeUrl: '',
+  homepageUrl: '',
 };
 
 interface ClubFormProps {
@@ -162,6 +166,24 @@ const PageComponent = ({ initialData }: ClubFormProps) => {
           placeholder={'knu-times'}
           value={formData.instagram}
           maxLength={30}
+        />
+      </FormSection>
+      <FormSection content={'동아리 유튜브'}>
+        <Input
+          handleFieldChange={handleFieldChange}
+          clubDetailKey={'youtubeUrl'}
+          placeholder={'https://www.youtube.com/@KNU1948'}
+          value={formData.youtubeUrl}
+          maxLength={1000}
+        />
+      </FormSection>
+      <FormSection content={'동아리 홈페이지'}>
+        <Input
+          handleFieldChange={handleFieldChange}
+          clubDetailKey={'homepageUrl'}
+          placeholder={'https://www.kongju.ac.kr'}
+          value={formData.homepageUrl}
+          maxLength={1000}
         />
       </FormSection>
       <div className={'mt-10'}>
