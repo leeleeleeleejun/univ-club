@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { Club, Filters, FilterType } from '@/types/club';
+import { Club, FilterType } from '@/types/club';
+import { useFilterStore } from '@/store/filter';
 
 const useFilters = (initialData: Club[]) => {
+  const { filters, setFilters } = useFilterStore();
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filters, setFilters] = useState<Filters>({
-    category: [],
-    campus: '',
-    tag: [],
-  });
 
   const handleSearch = (value: string) => {
     setSearchTerm(value);
