@@ -1,24 +1,6 @@
-import { ClubDetailKey } from '@/types/club';
-
-const Select = ({
-  value,
-  clubDetailKey,
-  handleFieldChange,
-  optionList,
-}: {
-  value: string;
-  clubDetailKey: ClubDetailKey;
-  handleFieldChange: (name: ClubDetailKey, data: string) => void;
-  optionList: string[];
-}) => {
+const Select = ({ optionList, ...props }: { optionList: string[] }) => {
   return (
-    <select
-      className={'w-full border rounded-md px-3 py-2'}
-      value={value}
-      onChange={(e) => {
-        handleFieldChange(clubDetailKey, e.target.value);
-      }}
-    >
+    <select className={'w-full border rounded-md px-3 py-2'} {...props}>
       {optionList.map((category) => (
         <option key={category}>{category}</option>
       ))}

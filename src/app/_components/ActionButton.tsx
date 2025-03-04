@@ -1,12 +1,15 @@
+import { PropsWithChildren } from 'react';
+
+interface ActionButtonProps {
+  onClick?: () => void;
+  disabled?: boolean;
+}
+
 const ActionButton = ({
   children,
   onClick,
   disabled,
-}: Readonly<{
-  children: React.ReactNode;
-  onClick?: () => void;
-  disabled?: boolean;
-}>) => {
+}: Readonly<PropsWithChildren<ActionButtonProps>>) => {
   return (
     <button
       disabled={disabled}

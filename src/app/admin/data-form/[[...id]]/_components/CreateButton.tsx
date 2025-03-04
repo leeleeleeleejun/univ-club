@@ -2,32 +2,30 @@
 
 import ActionButton from '@/app/_components/ActionButton';
 import { CreateClub, updateLogoImg } from '../_lib';
-import { ClubFormData } from '../_components/PageComponent';
+import { ClubCreateForm as ClubCreateFormType } from '../_types';
 import { useRouter } from 'next/navigation';
-import validateData from '@/app/admin/data-form/[[...id]]/utills/validateData';
-import { useRef, useState } from 'react';
+import { UseFormHandleSubmit } from 'react-hook-form';
+import { useRef } from 'react';
 
 const CreateButton = ({
-  formData,
   logoFile,
+  handleSubmit,
+  isSubmitting,
 }: {
-  formData: ClubFormData;
   logoFile: File | null;
+  handleSubmit: UseFormHandleSubmit<ClubCreateFormType>;
+  isSubmitting: boolean;
 }) => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  const isSubmitting = useRef(false);
+  const isProcessing = useRef(false); // 중복 요청 방지용 ref
 
-  const submitData = async () => {
-    if (isSubmitting.current) return;
-    isSubmitting.current = true;
-    setIsLoading(true);
+  const submitData = async (data: ClubCreateFormType) => {
+    if (isProcessing.current) return;
+    isProcessing.current = true;
 
     try {
-      if (!validateData(formData)) return;
-
       // 클럽 생성
-      const { id } = await CreateClub(JSON.stringify(formData));
+      const { id } = await CreateClub(JSON.stringify(data));
 
       // 이미지가 있는 경우에만 업로드
       if (logoFile) {
@@ -38,14 +36,13 @@ const CreateButton = ({
       router.refresh();
     } catch (error) {
       console.error(error);
-      isSubmitting.current = false;
-      setIsLoading(false);
+      isProcessing.current = false;
     }
   };
 
   return (
-    <ActionButton onClick={submitData} disabled={isSubmitting.current}>
-      {isLoading ? '제출 중...' : '제출하기'}
+    <ActionButton onClick={handleSubmit(submitData)} disabled={isSubmitting}>
+      {isSubmitting ? '제출 중...' : '제출하기'}
     </ActionButton>
   );
 };

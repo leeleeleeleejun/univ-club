@@ -1,32 +1,29 @@
-import { ClubDetailKey } from '@/types/club';
+import { useState } from 'react';
 
-const Input = ({
-  value,
-  placeholder = '',
-  clubDetailKey,
-  handleFieldChange,
-  maxLength,
-}: {
-  value: string;
+interface InputProps {
   placeholder: string;
-  clubDetailKey: ClubDetailKey;
-  handleFieldChange: (name: ClubDetailKey, data: string) => void;
   maxLength?: number;
-}) => {
+}
+
+const Input = ({ placeholder = '', maxLength, ...props }: InputProps) => {
+  const [count, setCount] = useState(0);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCount(e.target.value.length);
+  };
+
   return (
     <div>
       <input
         className={commonInputStyle}
         placeholder={placeholder}
-        value={value || ''}
-        onChange={(event) => {
-          handleFieldChange(clubDetailKey, event.target.value);
-        }}
         maxLength={maxLength}
+        {...props}
+        onChange={handleChange}
       />
       {maxLength && (
         <div className={'text-sm text-right font-semibold text-gray-400'}>
-          {value?.length || 0} / {maxLength}
+          {count} / {maxLength}
         </div>
       )}
     </div>

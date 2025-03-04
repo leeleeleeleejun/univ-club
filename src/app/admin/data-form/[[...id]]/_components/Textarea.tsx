@@ -1,35 +1,36 @@
-import { ClubDetailKey } from '@/types/club';
 import { commonInputStyle } from '@/app/admin/data-form/[[...id]]/_components/Input';
+import { useState } from 'react';
 
-const Textarea = ({
-  value,
-  placeholder = '',
-  clubDetailKey,
-  handleFieldChange,
-  maxLength,
-  addStyles,
-}: {
-  value: string;
+interface TextareaProps {
   placeholder: string;
-  clubDetailKey: ClubDetailKey;
-  handleFieldChange: (name: ClubDetailKey, data: string) => void;
   maxLength?: number;
   addStyles?: string;
-}) => {
+}
+
+const Textarea = ({
+  placeholder = '',
+  maxLength,
+  addStyles,
+  ...props
+}: TextareaProps) => {
+  const [count, setCount] = useState(0);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCount(e.target.value.length);
+  };
+
   return (
     <div>
       <textarea
         className={commonInputStyle + ' ' + addStyles}
         placeholder={placeholder}
-        value={value || ''}
-        onChange={(event) => {
-          handleFieldChange(clubDetailKey, event.target.value);
-        }}
         maxLength={maxLength}
+        {...props}
+        onChange={handleChange}
       />
       {maxLength && (
         <div className={'text-sm text-right font-semibold text-gray-400'}>
-          {value?.length || 0} / {maxLength}
+          {count} / {maxLength}
         </div>
       )}
     </div>
