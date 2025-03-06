@@ -29,7 +29,15 @@ const UpdateButton = ({
 
     try {
       // 클럽 생성
-      await updateClub(JSON.stringify(data), id);
+      const trimData = {
+        ...data,
+        instagram: data.instagram.trim().replace(/^@/, ''),
+        recruitmentUrl: data.recruitmentUrl.trim(),
+        youtubeUrl: data.youtubeUrl.trim(),
+        homepageUrl: data.homepageUrl.trim(),
+      };
+
+      await updateClub(JSON.stringify(trimData), id);
 
       // 이미지가 있는 경우에만 업로드
       if (logoFile) {
