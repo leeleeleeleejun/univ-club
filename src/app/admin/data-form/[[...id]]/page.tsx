@@ -1,4 +1,4 @@
-import PageComponent from '@/app/admin/data-form/[[...id]]/_components/PageComponent';
+import PageComponent from './PageComponent';
 import { getClub } from '@/app/club/[id]/_lib';
 
 const Page = async ({ params }: { params: Promise<{ id?: string[] }> }) => {

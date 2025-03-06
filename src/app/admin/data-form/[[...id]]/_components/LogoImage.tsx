@@ -40,7 +40,7 @@ const LogoImage = ({
   };
 
   return (
-    <div className={'flex justify-around'}>
+    <div className={'flex justify-around mb-6'}>
       <div className='w-[80px] h-[80px] relative md:w-20 md:h-20'>
         <Image
           src={logoPreview ? logoPreview : logo}

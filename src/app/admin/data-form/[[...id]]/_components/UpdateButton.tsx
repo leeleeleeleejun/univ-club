@@ -1,37 +1,35 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import ActionButton from '@/app/_components/ActionButton';
 import { updateClub, updateLogoImg } from '../_lib';
-import { ClubFormData } from '../_components/PageComponent';
-import { useRouter } from 'next/navigation';
-import validateData from '@/app/admin/data-form/[[...id]]/utills/validateData';
-import { useRef, useState } from 'react';
+import { ClubCreateForm as ClubCreateFormType } from '../_types';
+import { UseFormHandleSubmit } from 'react-hook-form';
+import { useRef } from 'react';
 
 const UpdateButton = ({
   id,
-  formData,
   logoFile,
   logoPreview,
+  isSubmitting,
+  handleSubmit,
 }: {
   id: string;
-  formData: ClubFormData;
   logoFile: File | null;
   logoPreview: string | null;
+  isSubmitting: boolean;
+  handleSubmit: UseFormHandleSubmit<ClubCreateFormType>;
 }) => {
   const router = useRouter();
-  const isSubmitting = useRef(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const isProcessing = useRef(false); // 중복 요청 방지용 ref
 
-  const submitData = async () => {
-    if (isSubmitting.current) return;
-    isSubmitting.current = true;
-    setIsLoading(true);
+  const submitData = async (data: ClubCreateFormType) => {
+    if (isProcessing.current) return;
+    isProcessing.current = true;
 
     try {
-      if (!validateData(formData)) return;
-
       // 클럽 생성
-      await updateClub(JSON.stringify(formData), id);
+      await updateClub(JSON.stringify(data), id);
 
       // 이미지가 있는 경우에만 업로드
       if (logoFile) {
@@ -44,14 +42,13 @@ const UpdateButton = ({
       router.refresh();
     } catch (error) {
       console.error(error);
-      isSubmitting.current = false;
-      setIsLoading(false);
+      isProcessing.current = false;
     }
   };
 
   return (
-    <ActionButton onClick={submitData} disabled={isSubmitting.current}>
-      {isLoading ? '수정 중...' : '수정하기'}
+    <ActionButton onClick={handleSubmit(submitData)} disabled={isSubmitting}>
+      {isSubmitting ? '수정 중...' : '수정하기'}
     </ActionButton>
   );
 };
