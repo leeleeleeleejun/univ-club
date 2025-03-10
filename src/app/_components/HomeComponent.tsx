@@ -22,7 +22,7 @@ export default function Home({ initialData }: HomeProps) {
         <SearchBar handleSearch={handleSearch} />
         <FilterBar onFilter={handleFilter} />
       </div>
-      <ul className='flex flex-col gap-4 px-5 pb-5 overflow-y-scroll'>
+      <ul className='flex flex-col px-5 pb-5 overflow-y-scroll'>
         {filteredAndSearchedData.map((club) => (
           <ClubCard
             key={club.id}

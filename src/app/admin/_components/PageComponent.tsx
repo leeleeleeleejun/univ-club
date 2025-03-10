@@ -19,7 +19,7 @@ const PageComponent = ({ data }: { data: Club[] }) => {
           <ActionButton>만들기</ActionButton>
         </Link>
       </div>
-      <ul className='flex flex-col gap-4 p-5 overflow-y-scroll'>
+      <ul className='flex flex-col p-5 overflow-y-scroll'>
         {filterData.map((club) => (
           <ClubCard
             key={club.id}
