@@ -7,7 +7,11 @@ const SearchBar = ({
   handleSearch: (value: string) => void;
 }) => {
   return (
-    <div className={'h-[46px] p-[15px] flex bg-gray-100 rounded-xl m-[20px]'}>
+    <div
+      className={
+        'h-[46px] px-[15px] flex rounded-xl m-[20px] border-solid border-[1px] border-gray-100 shadow-sm'
+      }
+    >
       <input
         onChange={(e) => {
           handleSearch(e.target.value);
