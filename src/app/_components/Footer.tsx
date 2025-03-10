@@ -13,7 +13,7 @@ export default function Footer() {
           Like_Knu
         </div>
         <div className='text-xs text-gray-400 md:text-sm'>
-          E-mail: wnstjr6293@gmail.com
+          E-mail: jcw001031@gmail.com
         </div>
       </div>
     </footer>
