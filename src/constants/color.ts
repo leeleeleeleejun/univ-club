@@ -12,14 +12,8 @@ export const deptCaptionColor: DeptCaptionColor = {
   // 기타: 'text-zinc-500',
 };
 
-export const campusColor: DeptCaptionColor = {
-  천안캠: 'text-blue-500 bg-blue-100',
-  신관캠: 'text-rose-500 bg-rose-100',
-  예산캠: 'text-orange-500 bg-orange-100',
-};
-
 export const campusTextColor: DeptCaptionColor = {
-  천안캠: 'text-blue-500',
-  신관캠: 'text-rose-500',
-  예산캠: 'text-orange-500',
+  천안캠: 'text-cheonan',
+  신관캠: 'text-singwan',
+  예산캠: 'text-yesan',
 };
