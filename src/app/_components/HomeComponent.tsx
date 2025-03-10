@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import SearchBar from '@/app/_components/SearchBar';
 import FilterBar from '@/app/_components/Filter';
 import ClubCard from '@/app/_components/ClubCard';
@@ -15,6 +17,21 @@ export default function Home({ initialData }: HomeProps) {
     useFilters(initialData);
 
   const filteredAndSearchedData = getFilteredAndSearchedData();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const params = searchParams.get('campus') || '';
+    let campus = '';
+    if (params === 'singwan') {
+      campus = '신관캠';
+    } else if (params === 'cheonan') {
+      campus = '천안캠';
+    } else if (params === 'yesan') {
+      campus = '예산캠';
+    }
+
+    handleFilter('campus', campus);
+  }, []);
 
   return (
     <>

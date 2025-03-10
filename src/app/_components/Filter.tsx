@@ -19,7 +19,7 @@ const FilterBar = ({ onFilter }: FilterBarProps) => {
       <div className='rounded-xl flex justify-around gap-2 overflow-x-auto'>
         <button
           onClick={handleReset}
-          className={`rounded-full text-sm font-semibold whitespace-nowrap py-1.5 px-4 ${filters.category.length === 0 ? campusBackgroundColor['천안캠'] + ' text-white' : 'bg-gray-100 text-gray-400'}`}
+          className={`rounded-full text-sm font-semibold whitespace-nowrap py-1.5 px-4 ${filters.category.length === 0 ? campusBackgroundColor[filters.campus] + ' text-white' : 'bg-gray-100 text-gray-400'}`}
         >
           전체
         </button>
@@ -27,7 +27,7 @@ const FilterBar = ({ onFilter }: FilterBarProps) => {
           <CategoryTabBtn
             key={category}
             category={category}
-            campus={'천안캠'}
+            campus={filters.campus}
             onFilter={onFilter}
             isActive={filters.category.includes(category)}
           />

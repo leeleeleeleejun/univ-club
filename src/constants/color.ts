@@ -7,6 +7,7 @@ export const campusTextColor: DeptCaptionColor = {
 };
 
 export const campusBackgroundColor: DeptCaptionColor = {
+  '': 'bg-[#313D4C]',
   천안캠: 'bg-cheonan',
   신관캠: 'bg-singwan',
   예산캠: 'bg-yesan',

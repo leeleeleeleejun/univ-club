@@ -44,5 +44,6 @@ export default {
     'bg-cheonan',
     'bg-singwan',
     'bg-yesan',
+    'bg-[#313D4C]',
   ],
 } satisfies Config;
