@@ -20,10 +20,7 @@ export default function Home({ initialData }: HomeProps) {
     <>
       <div className='flex flex-col sticky top-0 bg-white pb-5'>
         <SearchBar handleSearch={handleSearch} />
-        <FilterBar
-          ClubsLength={filteredAndSearchedData.length}
-          onFilter={handleFilter}
-        />
+        <FilterBar onFilter={handleFilter} />
       </div>
       <ul className='flex flex-col gap-4 px-5 pb-5 overflow-y-scroll'>
         {filteredAndSearchedData.map((club) => (

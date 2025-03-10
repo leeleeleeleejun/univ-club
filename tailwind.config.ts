@@ -37,8 +37,12 @@ export default {
     'bg-blue-100',
     'bg-rose-100',
     'bg-orange-100',
+
     'text-cheonan',
     'text-singwan',
     'text-yesan',
+    'bg-cheonan',
+    'bg-singwan',
+    'bg-yesan',
   ],
 } satisfies Config;
