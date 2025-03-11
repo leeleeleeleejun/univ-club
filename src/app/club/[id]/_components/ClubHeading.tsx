@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { deptCaptionColor } from '@/constants/color';
 import { ClubInfo } from '@/types/club';
 import CampusTag from '@/app/_components/CampusTag';
 
@@ -22,7 +21,7 @@ export default function ClubHeading(info: ClubInfo) {
         <div className=''>
           <h1 className='shrink-0 font-bold text-2xl'>{name}</h1>
           <div className='flex items-center mt-0.5 text-base font-semibold md:text-lg'>
-            <div className={`${deptCaptionColor[category]}`}>{category}</div>
+            <div className='text-zinc-500'>{category}</div>
             <div className='px-1.5 font-medium text-gray-300 text-lg'>|</div>
             <div className='text-gray-500'>{tag}</div>
           </div>

@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import SearchBar from '@/app/_components/SearchBar';
 import FilterBar from '@/app/_components/Filter';
 import ClubCard from '@/app/_components/ClubCard';
@@ -15,17 +17,29 @@ export default function Home({ initialData }: HomeProps) {
     useFilters(initialData);
 
   const filteredAndSearchedData = getFilteredAndSearchedData();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const params = searchParams.get('campus') || '';
+    let campus = '';
+    if (params === 'singwan') {
+      campus = '신관캠';
+    } else if (params === 'cheonan') {
+      campus = '천안캠';
+    } else if (params === 'yesan') {
+      campus = '예산캠';
+    }
+
+    handleFilter('campus', campus);
+  }, []);
 
   return (
     <>
       <div className='flex flex-col sticky top-0 bg-white pb-5'>
         <SearchBar handleSearch={handleSearch} />
-        <FilterBar
-          ClubsLength={filteredAndSearchedData.length}
-          onFilter={handleFilter}
-        />
+        <FilterBar onFilter={handleFilter} />
       </div>
-      <ul className='flex flex-col gap-4 px-5 pb-5 overflow-y-scroll'>
+      <ul className='flex flex-col px-5 pb-5 overflow-y-scroll'>
         {filteredAndSearchedData.map((club) => (
           <ClubCard
             key={club.id}
