@@ -7,6 +7,7 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
     <li key={id} className='border-solid border-b-[1.5px] border-gray-100'>
       <Link
         href={`/club/${id}`}
+        prefetch={false}
         className='flex w-full justify-between items-center py-4 gap-1'
       >
         <div>
