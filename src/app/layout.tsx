@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     url: `https://univ-club.vercel.app`,
     type: 'website',
   },
+  verification: {
+    google: "bm4pVYJqQpnZtjtk1tkNq4efo8B8j-Ew2eyGJwFVEZU",
+  },
 };
 
 export default function RootLayout({

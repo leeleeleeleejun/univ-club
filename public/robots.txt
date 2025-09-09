@@ -1,0 +1,15 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+
+# Host
+Host: https://univ-club.vercel.app
+
+# Sitemaps
+Sitemap: https://univ-club.vercel.app/sitemap.xml
+
+
