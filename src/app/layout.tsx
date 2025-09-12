@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Footer from '@/app/_components/Footer';
 import { Analytics } from '@vercel/analytics/next';
+import {GoogleAnalytics, GoogleTagManager} from '@next/third-parties/google';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -43,6 +44,12 @@ export default function RootLayout({
       >
         <div className={'grow flex flex-col'}>{children}</div>
         <Analytics />
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
         <Footer />
       </body>
     </html>
