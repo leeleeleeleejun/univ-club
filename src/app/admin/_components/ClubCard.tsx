@@ -8,6 +8,7 @@ const ClubCard = ({ id, name, tag, category, campus }: Club) => {
       <Link
         href={`admin/club/${id}`}
         className='flex w-full justify-between items-center py-4 gap-1'
+        prefetch={false}
       >
         <div>
           <div className='font-bold text-xl'>{name}</div>
