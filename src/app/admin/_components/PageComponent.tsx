@@ -28,6 +28,7 @@ const PageComponent = ({ data }: { data: Club[] }) => {
             category={club.category}
             tag={club.tag}
             campus={club.campus}
+            updatedAt={club.updatedAt}
           />
         ))}
       </ul>

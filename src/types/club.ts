@@ -4,6 +4,7 @@ export interface Club {
   category: string;
   tag: string;
   campus: string;
+  updatedAt: string;
 }
 
 export interface ClubInfo {
