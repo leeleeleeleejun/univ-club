@@ -23,12 +23,7 @@ const PageComponent = ({ data }: { data: Club[] }) => {
         {filterData.map((club) => (
           <ClubCard
             key={club.id}
-            id={club.id}
-            name={club.name}
-            category={club.category}
-            tag={club.tag}
-            campus={club.campus}
-            updatedAt={club.updatedAt}
+            {...club}
           />
         ))}
       </ul>

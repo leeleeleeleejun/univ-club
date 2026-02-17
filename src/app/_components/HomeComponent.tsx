@@ -43,11 +43,7 @@ export default function Home({ initialData }: HomeProps) {
         {filteredAndSearchedData.map((club) => (
           <ClubCard
             key={club.id}
-            id={club.id}
-            name={club.name}
-            category={club.category}
-            tag={club.tag}
-            campus={club.campus}
+            {...club}
           />
         ))}
       </ul>
