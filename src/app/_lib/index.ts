@@ -17,6 +17,12 @@ export const sortClubs = (clubs: Club[]): Club[] => {
       CAMPUS_OPTIONS.indexOf(a.campus) - CAMPUS_OPTIONS.indexOf(b.campus);
 
     if (campusComparison === 0) {
+      const isLikeLikeA = a.name === '멋쟁이사자처럼';
+      const isLikeLikeB = b.name === '멋쟁이사자처럼';
+
+      if (isLikeLikeA && !isLikeLikeB) return -1; // A가 '멋쟁이사자처럼'이고 B가 아니면 A를 먼저
+      if (!isLikeLikeA && isLikeLikeB) return 1;  // B가 '멋쟁이사자처럼'이고 A가 아니면 B를 먼저
+
       return a.category.localeCompare(b.category); // 같은 캠퍼스일 때는 카테고리로 정렬
     }
 
