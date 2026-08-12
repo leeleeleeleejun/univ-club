@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 동아리 플랫폼 프로젝트
 
-## Getting Started
+**파편화된 동아리정보와 비효율적인 동아리 업무 처리 플랫폼**
 
-First, run the development server:
+## 문제 정의
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **에브리타임 게시글의 홍보 지속성 부족**
+    
+    에브리타임에 모집 홍보글을 작성하더라도 시간이 지나면 글이 아래로 밀려나 홍보 효과가 점차 떨어지는 문제가 있습니다.
+    
+2. **인스타그램 페이지 탐색의 번거로움**
+    
+    동아리 정보를 얻기 위해 각 동아리의 인스타그램 페이지를 하나씩 클릭하며 확인해야 합니다.
+    
+3. **정보 전달의 제한**
+    
+    동아리가 소개하고 싶은 다양한 내용을 전달하기에, 인스타그램의 게시물 사진 한 장으로는 충분하지 않을 수 있습니다.
+    
+4. **모집 상태 파악의 어려움**
+    
+    현재 동아리가 모집 중인지, 모집이 마감되었는지 쉽게 알 수 없습니다.
+    
+5. **지원 절차의 번거로움**
+    
+    동아리에 지원하고 싶어도 각 동아리의 홍보글을 찾아가 링크를 확인하고 들어가는 과정이 번거롭습니다.
+    
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/da034044-47cb-480d-bc54-f091956e143d" />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## **기능 목록**
 
-## Learn More
+### **동아리 간편 조회**
 
-To learn more about Next.js, take a look at the following resources:
+- **공주대학교 전체 동아리의 정보를 한 공간에서 조회할 수 있습니다.**
+- 필터기능(모집기준, 캠퍼스, 카테고리)을 통해 사용자가 원하는 동아리를 검색할 수 있습니다.
+- 검색을 통해 원하는 동아리를 조회할 수 있습니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **동아리 정보 조회**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 동아리가 관리하는 정보를 확인할 수 있습니다.
+- 각 동아리의 모집기간에는 간편하게 **동아리 지원으로 연결**할 수 있습니다.
+- 각 동아리는 동아리 소개 내용을 수정 및 관리할 수 있습니다.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## **관리자 기능 목록 (동아리 연합회)**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **동아리 관리**
+
+- 총동아리 연합회는 동아리를 생성 및 삭제할 수 있는 권한을 갖습니다.
+- 신규 동아리 신청 관리를 일관되게 관리할 수 있습니다.
+- 각 동아리는 동아리에 부여되는 고유한 아이디와, 비밀번호를 통해 로그인하여 동아리 관리 페이지에 접근할 수 있습니다.
+
+### **공지사항 (예정)**
+
+- 총동아리 연합회는 파일과 사진을 등록하여 공지사항을 생성할 수 있습니다.
+- 해당 공지사항은 각 동아리 회장 뿐만 아니라 일반 학우까지 전체 사용자에게 노출됩니다. 
+
+---
+
+#### 유사 플랫폼: 명지대학교 동아리 플랫폼
